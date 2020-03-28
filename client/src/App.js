@@ -9,6 +9,7 @@ import {
 } from 'rebass'
 
 import { ThemeProvider } from 'emotion-theming'
+
 const theme = {
   fontSizes: [
     12, 14, 16, 24, 32, 48, 64
