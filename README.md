@@ -3,9 +3,9 @@
 Welcome to our web app ;) <br />
 🎉💿🎵
 
-## Topic - Moodify
+## Topic - Moosify
 We want to create a webapplication which uses the Spotify Web API to recommend songs based on the users mood which he states when opening the page as well as implementing a mood diagram based on the users "mood history".
-<br /><br />Link to the web app: [Moodify](https://moodify2.glitch.me/)
+<br /><br />Link to the web app: [Moosify](http://moosify.herokuapp.com)
 
 ## Kickoff
 2020-02
