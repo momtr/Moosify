@@ -50,7 +50,6 @@ app.get('/', (req, res) => {
  */
 app.use('/redirect', redirectMiddleware);
 
-
 /** 
  * Spotify calles this endpoint
  */
@@ -75,7 +74,17 @@ app.get('/gotUser', async (req, res) => {
       'Authorization' : 'Basic ' + new Buffer(process.env.CLIENT_ID + ':' + process.env.CLIENT_SECRET).toString('base64')
     }
   });
-  console.log(apiResponse);
+  /** insert into DB */
+  let accessToken = await apiResponse.body.access_token;
+  let refreshToken = await apiResponse.body.refresh_token;
+  console.log('access_token: ', accessToken)
+  console.log('refresh token: ', refresh_token);
+  /** get username and id from the Spotify Web API */
+  // reuest here ...
+  /** insert new user in databse */
+  // ID | Username | access_token | user:object:stream
+  /** Redirect to Mood (Mood-o-meter) */
+  res.redirect('/mood');
 });
 
 /** 

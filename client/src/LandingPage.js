@@ -4,7 +4,7 @@ import {Link} from "react-router-dom";
 function App() {
   return (
     <div className="App">
-      <Link to="/redirect">Redirect Link</Link>
+      <a href="https://moosify.herokuapp.com/redirect">Redirect</a>
     </div>
   );
 }
