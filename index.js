@@ -1,39 +1,70 @@
-// Biswas, Maitz, Mitterdorfer
-// Server.js, 2020
+/**
+ * index.js file
+ * @authors Biswas, Maitz, Mitterdorfer
+ * @version 0.0.1
+ * @date 04/2020
+ * @description the main server file for the Moosify Web App
+ */
 
-// Spotify 
-// move into env file!!
-
+/** ========================= Spotify ========================= */
+/**
+ * @description the data we want to retrieve from the user
+ */
 const scopes = "user-read-private user-read-email user-read-recently-played";
 
-// npm modules
-const express = require('express');
-const path = require('path');
-const querystring = require('querystring');
-const fetch = require('node-fetch');
 
+/** ========================= NPM Modules ========================= */
+/**
+ * @description express is used for the server
+ */
+const express = require('express');
+/**
+ * @description path is used for server specific paths
+ */
+const path = require('path');
+/**
+ * @description querystring is used for constructing query strings (..?key=value&key2=value2)
+ */
+const querystring = require('querystring');
+/**
+ * @description fetch (i.e. node-fetch) is used for sending HTTP requests
+ */
+const fetch = require('node-fetch');
+/**
+ * @description middleware for redirecting to Spotify Web API
+ */
+const redirectMiddleware = require('./routes/redirectMiddleware');
+
+/** ========================= Express App ========================= */
+/**
+ * @description app is a newly created express app
+ */
 const app = express();
 
-// Serve static files from the React app
+/** ========================= Static Files ========================= */
+/**
+ * we want to use the client's build folder as a static asset
+ */
 app.use(express.static(path.join(__dirname, 'client/build')));
 
-
+/** ========================= Endpoints / Middlewares ========================= */
+/** 
+ * display landing page in front-end if endpoint '/' is called
+ */
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname+'/client/build/index.html'));
 });
 
-app.get('/redirect', (req, res) => {
-  res.redirect(
-    "https://accounts.spotify.com/authorize?" +
-      querystring.stringify({
-        response_type: 'code',
-        client_id: process.env.CLIENT_ID,
-        scope: scopes,
-        redirect_uri: "https://moosify.herokuapp.com/gotUser"
-      })
-  );
-}); 
 
+/** 
+ * @description if endpoint '/redirect' is called, redirect the user in the front-end to the Spotify's redirect endpoint 
+ */
+app.use('/redirect', redirectMiddleware);
+
+
+/** 
+ * Spotify calles this endpoint
+ */
 app.get('/gotUser', async (req, res) => {
   let code = req.query.code || null;
   if(!code) {
@@ -43,10 +74,11 @@ app.get('/gotUser', async (req, res) => {
     });
     return;
   }
+  /** send POST request to Spitify Web API */
   let apiResponse = await fetch('https://accounts.spotify.com/api/token', {
     method: 'POST',
     body: {
-      code: code, //user id
+      code: code,
       redirect_uri: 'https://moosify.herokuapp.com/gotUser',
       grant_type: 'authorization_code'
     },
@@ -57,10 +89,16 @@ app.get('/gotUser', async (req, res) => {
   console.log(apiResponse);
 });
 
+/** 
+ * called if no enpoint '/..' matches the endpoint specified in the URL 
+ */
 app.get('*', (req, res) => {
   res.send('Page not found');
 });
 
+/** 
+ * start the server (on the port specified in the environment)
+ */
 const port = process.env.PORT || 7000;
 app.listen(port);
 
