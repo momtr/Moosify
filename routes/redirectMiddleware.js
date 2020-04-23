@@ -6,6 +6,24 @@
  * @description redirect middleware
  */
 
+/** ========================= Spotify ========================= */
+/**
+ * @description the data we want to retrieve from the user
+ */
+const scopes = "user-read-private user-read-email user-read-recently-played";
+
+
+/** ========================= NPM Modules ========================= */
+/**
+ * @description querystring is used for constructing query strings (..?key=value&key2=value2)
+ */
+const querystring = require('querystring');
+
+/** ========================= Router ========================= */
+/**
+ * create a new router
+ */
+
 const express = require("express");
 const router = express.Router();
 

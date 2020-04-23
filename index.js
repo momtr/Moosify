@@ -6,13 +6,6 @@
  * @description the main server file for the Moosify Web App
  */
 
-/** ========================= Spotify ========================= */
-/**
- * @description the data we want to retrieve from the user
- */
-const scopes = "user-read-private user-read-email user-read-recently-played";
-
-
 /** ========================= NPM Modules ========================= */
 /**
  * @description express is used for the server
@@ -22,10 +15,6 @@ const express = require('express');
  * @description path is used for server specific paths
  */
 const path = require('path');
-/**
- * @description querystring is used for constructing query strings (..?key=value&key2=value2)
- */
-const querystring = require('querystring');
 /**
  * @description fetch (i.e. node-fetch) is used for sending HTTP requests
  */
@@ -96,6 +85,7 @@ app.get('*', (req, res) => {
   res.send('Page not found');
 });
 
+/** ========================= Start the Server ========================= */
 /** 
  * start the server (on the port specified in the environment)
  */
