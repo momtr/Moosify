@@ -34,7 +34,7 @@ app.get('/redirect', (req, res) => {
   );
 }); 
 
-app.get('/gotUser', (req, res) => {
+app.get('/gotUser', async (req, res) => {
   let code = req.query.code || null;
   if(!code) {
     res.json({
