@@ -96,20 +96,15 @@ app.get('/gotUser', (req, res) => {
     client_secret: process.env.CLIENT_SECRET
   }
 
-  res.send(querystring.stringify(body));
 
   /** send POST request to Spitify Web API */
   fetch('https://accounts.spotify.com/api/token', {
     method: 'POST',
     body: querystring.stringify(body)
   })
-  .then(response => { 
-    console.log('response', response); 
-    console.log('response body: ', response.body);
-    return response.json();
-  })
-  .then(json => console.log(json))
-  .catch(err => console.log(err));
+  .then(response => response.json())
+  .then(json => console.log("JSON object: ",  json))
+  .catch(err => console.log("Error: ", err));
   /** insert into DB */
   //let accessToken = await apiResponse.
   //let refreshToken = await apiResponse.refreshToken;
