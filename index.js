@@ -72,7 +72,7 @@ app.get('/redirect', (req, res) => {
   );
 });
 
-app.get("/auth", function(req, res) {
+app.get("/gotUser", function(req, res) {
   let code = req.query.code || null;
 
   if (!code) {
@@ -115,7 +115,7 @@ app.get("/auth", function(req, res) {
 /** 
  * Spotify calles this endpoint
  */
-app.get('/gotUser', (req, res) => {
+app.get('/________', (req, res) => {
   let code = req.query.code || null;
   /** send code to the client */
   if(!code) {
