@@ -91,10 +91,12 @@ app.get('/gotUser', (req, res) => {
     grant_type: 'authorization_code',
     //"Content-Type": "application/x-www-form-urlencoded",
     code: code,
-    redirect_uri: 'https://moosify.herokuapp.com/gotUser', /**KEEEEP LIVING ON DREEEAAMMS! */
+    redirect_uri: 'https://moosify.herokuapp.com/gotUser', /** KEEEEP LIVING ON DREEEAAMMS! */
     client_id: process.env.CLIENT_ID,
     client_secret: process.env.CLIENT_SECRET
   }
+
+  res.send(querystring.stringify(body));
 
   /** send POST request to Spitify Web API */
   fetch('https://accounts.spotify.com/api/token', {
