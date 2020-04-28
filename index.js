@@ -19,13 +19,8 @@ const path = require('path');
  * @description fetch (i.e. node-fetch) is used for sending HTTP requests
  */
 const fetch = require('node-fetch');
-/**
- * @description middleware for redirecting to Spotify Web API
- */
-const redirectMiddleware = require('./routes/redirectMiddleware');
-/**
- * 
- */
+
+
 const querystring = require('querystring');
 
 /**
