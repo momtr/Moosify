@@ -111,6 +111,7 @@ app.get("/gotUser", function(req, res) {
       sendResponseMessage(res, 10003, "Could not get access_token from API");
     }
   });
+});
 
 /** 
  * Spotify calles this endpoint
@@ -159,7 +160,7 @@ app.get("/gotUser", function(req, res) {
 
 app.get("/mood", (req, res) => {
   res.send("Application flow worked.")
-})
+});
 /** 
  * called if no enpoint '/..' matches the endpoint specified in the URL 
  */
