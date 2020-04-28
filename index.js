@@ -99,7 +99,7 @@ app.get('/gotUser', (req, res) => {
   /** send POST request to Spitify Web API */
   fetch('https://accounts.spotify.com/api/token', {
     method: 'POST',
-    body: querstring.stringify(body)
+    body: querystring.stringify(body)
   })
   .then(response => { 
     console.log('response', response); 
