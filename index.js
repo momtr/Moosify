@@ -97,7 +97,8 @@ app.get('/gotUser', (req, res) => {
     method: 'POST',
     body: querystring.stringify(body)
   })
-  .then(response => console.log(response))
+  .then(response => response.text())
+  .then(text => console.log(text))
   .catch(err => console.log("Error: ", err));
   /** insert into DB */
   //let accessToken = await apiResponse.

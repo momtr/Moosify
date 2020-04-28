@@ -102,3 +102,5 @@ class Apriori {
     }
 
 }
+
+module.exports = { Apriori };
