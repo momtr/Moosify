@@ -7,10 +7,7 @@
  */
 
 /** ========================= Spotify ========================= */
-/**
- * @description the data we want to retrieve from the user
- */
-const scopes = "user-read-private user-read-email user-read-recently-played";
+
 
 
 /** ========================= NPM Modules ========================= */

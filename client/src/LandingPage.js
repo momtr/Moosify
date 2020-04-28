@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link} from "react-router-dom";
 
-function App() {
+function LandingPage() {
   return (
     <div className="App">
       <a href="https://moosify.herokuapp.com/redirect">Redirect</a>
@@ -9,4 +9,4 @@ function App() {
   );
 }
 
-export default App;
+export default LandingPage;

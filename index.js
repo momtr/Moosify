@@ -23,6 +23,15 @@ const fetch = require('node-fetch');
  * @description middleware for redirecting to Spotify Web API
  */
 const redirectMiddleware = require('./routes/redirectMiddleware');
+/**
+ * 
+ */
+const querystring = require('querystring');
+
+/**
+ * @description the data we want to retrieve from the user
+ */
+const scopes = "user-read-private user-read-email user-read-recently-played";
 
 /** ========================= Express App ========================= */
 /**
@@ -47,14 +56,29 @@ app.get('/', (req, res) => {
 
 /** 
  * @description if endpoint '/redirect' is called, redirect the user in the front-end to the Spotify's redirect endpoint 
- */
+
 app.use('/redirect', redirectMiddleware);
+*/
+
+app.get('/redirect', (req, res) => {
+  res.redirect(
+      "https://accounts.spotify.com/authorize?" +
+      querystring.stringify({
+          response_type: 'code',
+          client_id: process.env.CLIENT_ID,
+          scope: scopes,
+          redirect_uri: "https://moosify.herokuapp.com/gotUser"
+      })
+  );
+});
 
 /** 
  * Spotify calles this endpoint
  */
 app.get('/gotUser', async (req, res) => {
   let code = req.query.code || null;
+  /** send code to the client */
+  res.send(JSON.stringify({ code }));
   if(!code) {
     res.json({
       status: 'ERROR',
@@ -87,6 +111,9 @@ app.get('/gotUser', async (req, res) => {
   res.redirect('/mood');
 });
 
+app.get("/mood", (req, res) => {
+  res.send("Application flow worked.")
+})
 /** 
  * called if no enpoint '/..' matches the endpoint specified in the URL 
  */
