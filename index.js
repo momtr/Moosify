@@ -89,9 +89,9 @@ app.get('/gotUser', (req, res) => {
   /** request body */
   const body = {
     grant_type: 'authorization_code',
-    "Content-Type": "application/x-www-form-urlencoded",
+    //"Content-Type": "application/x-www-form-urlencoded",
     code: code,
-    redirect_uri: 'https://moosify.herokuapp.com/gotUser',
+    redirect_uri: 'https://moosify.herokuapp.com/gotUser', /**KEEEEP LIVING ON DREEEAAMMS! */
     client_id: process.env.CLIENT_ID,
     client_secret: process.env.CLIENT_SECRET
   }
