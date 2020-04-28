@@ -75,7 +75,7 @@ app.get('/redirect', (req, res) => {
 /** 
  * Spotify calles this endpoint
  */
-app.get('/gotUser', async (req, res) => {
+app.get('/gotUser', (req, res) => {
   let code = req.query.code || null;
   /** send code to the client */
   if(!code) {
@@ -85,6 +85,7 @@ app.get('/gotUser', async (req, res) => {
     });
     return;
   }
+  
   /** request body */
   const body = {
     grant_type: 'authorization_code',
@@ -101,7 +102,8 @@ app.get('/gotUser', async (req, res) => {
   })
   .then(response => { 
     console.log('response', response); 
-    console.log('response body: ', response.body); 
+    console.log('response body: ', response.body);
+    response.text().then(console.log);
     return response.json();
   })
   .then(json => console.log(json))
