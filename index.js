@@ -19,8 +19,13 @@ const path = require('path');
  * @description fetch (i.e. node-fetch) is used for sending HTTP requests
  */
 const fetch = require('node-fetch');
-
-
+/**
+ * @description request 
+ */
+const request = require('request');
+/**
+ * @description querystring
+ */
 const querystring = require('querystring');
 
 /**
@@ -67,6 +72,46 @@ app.get('/redirect', (req, res) => {
   );
 });
 
+app.get("/auth", function(req, res) {
+  let code = req.query.code || null;
+
+  if (!code) {
+    console.log("code is not there!");
+    sendResponseMessage(res, 10001, "Code is not given");
+    return;
+  }
+
+  let authOptions = {
+    url: "https://accounts.spotify.com/api/token",
+    form: {
+      code: code, //user id
+      redirect_uri: redirect_uri,
+      grant_type: "authorization_code"
+    },
+    headers: {
+      Authorization:
+        "Basic " +
+        new Buffer(process.env.CLIENT_ID + ":" + process.env.CLIENT_SECRET).toString("base64")
+    },
+    json: true
+  };
+
+  request.post(authOptions, function(error, response, body) {
+    if (!error && response.statusCode === 200) {
+      let access_token = body.access_token;
+      let refresh_token = body.refresh_token;
+
+      // use the access token to access the Spotify Web API
+      res.cookie("access_token", access_token);
+      res.cookie("refresh_token", refresh_token);
+      res.redirect("/mood");
+    } 
+    else {
+      console.log("error occured: ", error);
+      sendResponseMessage(res, 10003, "Could not get access_token from API");
+    }
+  });
+
 /** 
  * Spotify calles this endpoint
  */
@@ -86,7 +131,7 @@ app.get('/gotUser', (req, res) => {
     grant_type: 'authorization_code',
     //"Content-Type": "application/x-www-form-urlencoded",
     code: code,
-    redirect_uri: 'https://moosify.herokuapp.com/gotUser', /** KEEEEP LIVING ON DREEEAAMMS! */
+    redirect_uri: 'https://moosify.herokuapp.com/gotUser', /** KEEEEP LIVING ON DREEEAAMS! */
     client_id: process.env.CLIENT_ID,
     client_secret: process.env.CLIENT_SECRET
   }
