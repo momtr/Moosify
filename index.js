@@ -85,22 +85,26 @@ app.get('/gotUser', async (req, res) => {
     });
     return;
   }
+  const body = {
+    code: code,
+    redirect_uri: 'https://moosify.herokuapp.com/gotUser',
+    grant_type: 'authorization_code' }
+
   /** send POST request to Spitify Web API */
-  let apiResponse = await fetch('https://accounts.spotify.com/api/token', {
+  fetch('https://accounts.spotify.com/api/token', {
     method: 'POST',
-    body: {
-      code: code,
-      redirect_uri: 'https://moosify.herokuapp.com/gotUser',
-      grant_type: 'authorization_code'
-    },
+    body: JSON.stringify(body),
     headers: {
       'Authorization' : 'Basic ' + new Buffer(process.env.CLIENT_ID + ':' + process.env.CLIENT_SECRET).toString('base64')
     }
-  });
+  })
+  .then(response => response.json())
+  .then(json => res.send(json))
+  .catch(err => res.send(err));
   /** insert into DB */
   //let accessToken = await apiResponse.
   //let refreshToken = await apiResponse.refreshToken;
-  res.send('API response: ', apiResponse);
+  //res.send('API response: ', apiResponse);
   //res.send('refresh token: ', refreshToken);
   /** get username and id from the Spotify Web API */
   // reuest here ...
