@@ -85,6 +85,7 @@ app.get('/gotUser', async (req, res) => {
     });
     return;
   }
+  /** request body */
   const body = {
     grant_type: 'authorization_code',
     code: code,
@@ -99,7 +100,11 @@ app.get('/gotUser', async (req, res) => {
       Authorization: 'Basic ' + new Buffer(process.env.CLIENT_ID + ':' + process.env.CLIENT_SECRET).toString('base64')
     }
   })
-  .then(response => { console.log('response', response); console.log('response body: ', response.body); return response.body.json()} )
+  .then(response => { 
+    console.log('response', response); 
+    console.log('response body: ', response.body); 
+    return response.json();
+  })
   .then(json => console.log(json))
   .catch(err => console.log(err));
   /** insert into DB */
