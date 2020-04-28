@@ -101,8 +101,8 @@ app.get('/gotUser', async (req, res) => {
   /** insert into DB */
   let accessToken = await apiResponse.body.access_token;
   let refreshToken = await apiResponse.body.refresh_token;
-  console.log('access_token: ', accessToken)
-  console.log('refresh token: ', refresh_token);
+  res.send('access_token: ', accessToken)
+  res.send('refresh token: ', refreshToken);
   /** get username and id from the Spotify Web API */
   // reuest here ...
   /** insert new user in databse */
