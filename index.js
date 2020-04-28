@@ -78,7 +78,6 @@ app.get('/redirect', (req, res) => {
 app.get('/gotUser', async (req, res) => {
   let code = req.query.code || null;
   /** send code to the client */
-  res.send(JSON.stringify({ code }));
   if(!code) {
     res.json({
       status: 'ERROR',
@@ -101,14 +100,13 @@ app.get('/gotUser', async (req, res) => {
   /** insert into DB */
   let accessToken = await apiResponse.body.access_token;
   let refreshToken = await apiResponse.body.refresh_token;
-  res.send('access_token: ', accessToken)
+  res.send('access token: ', accessToken);
   res.send('refresh token: ', refreshToken);
   /** get username and id from the Spotify Web API */
   // reuest here ...
   /** insert new user in databse */
   // ID | Username | access_token | user:object:stream
   /** Redirect to Mood (Mood-o-meter) */
-  res.redirect('/mood');
 });
 
 app.get("/mood", (req, res) => {
