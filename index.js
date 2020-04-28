@@ -86,9 +86,9 @@ app.get('/gotUser', async (req, res) => {
     return;
   }
   const body = {
+    grant_type: 'authorization_code',
     code: code,
-    redirect_uri: 'https://moosify.herokuapp.com/gotUser',
-    grant_type: 'authorization_code' 
+    redirect_uri: 'https://moosify.herokuapp.com/gotUser'
   }
 
   /** send POST request to Spitify Web API */
@@ -96,12 +96,12 @@ app.get('/gotUser', async (req, res) => {
     method: 'POST',
     body: JSON.stringify(body),
     headers: {
-      'Authorization' : 'Basic ' + new Buffer(process.env.CLIENT_ID + ':' + process.env.CLIENT_SECRET).toString('base64')
+      Authorization: 'Basic ' + new Buffer(process.env.CLIENT_ID + ':' + process.env.CLIENT_SECRET).toString('base64')
     }
   })
-  .then(response => response.json())
-  .then(json => res.send(JSON.stringify(json)))
-  .catch(err => res.send(err));
+  .then(response => { console.log('response', response); console.log('response body: ', response.body); return response.body.json()} )
+  .then(json => console.log(json))
+  .catch(err => console.log(err));
   /** insert into DB */
   //let accessToken = await apiResponse.
   //let refreshToken = await apiResponse.refreshToken;
