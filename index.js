@@ -121,7 +121,7 @@ app.get("/gotUser", function(req, res) {
       request.get(options, function(error, response, body) {
         //push to db
         let userID = body.id;
-        db.insertData('users', id, body);
+        db.insertData('users', userID, body);
       });
     } 
     else {
