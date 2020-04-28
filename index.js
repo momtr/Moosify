@@ -6,7 +6,12 @@
  * @description the main server file for the Moosify Web App
  */
 
-/** ========================= NPM Modules ========================= */
+/** ========================= Modules ========================= */ 
+/**
+ * @description Firebase Database
+ */
+const firebaseDB = require('./libs/database/database.js');
+const db = new firebaseDB.FirebaseRealTime();
 /**
  * @description express is used for the server
  */
@@ -105,6 +110,19 @@ app.get("/gotUser", function(req, res) {
       res.cookie("access_token", access_token);
       res.cookie("refresh_token", refresh_token);
       res.redirect("/mood");
+
+      var options = {
+        url: 'https://api.spotify.com/v1/me',
+        headers: { 'Authorization': 'Bearer ' + access_token },
+        json: true
+      };
+
+      // use the access token to access the Spotify Web API
+      request.get(options, function(error, response, body) {
+        //push to db
+        let userID = body.id;
+        db.insertData('users', id, body);
+      });
     } 
     else {
       console.log("error occured: ", error);
