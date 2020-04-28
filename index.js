@@ -85,7 +85,7 @@ app.get("/gotUser", function(req, res) {
     url: "https://accounts.spotify.com/api/token",
     form: {
       code: code, //user id
-      redirect_uri: redirect_uri,
+      redirect_uri: "https://moosify.herokuapp.com/gotUser",
       grant_type: "authorization_code"
     },
     headers: {
