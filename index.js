@@ -115,47 +115,47 @@ app.get("/gotUser", function(req, res) {
 /** 
  * Spotify calles this endpoint
  */
-app.get('/________', (req, res) => {
-  let code = req.query.code || null;
-  /** send code to the client */
-  if(!code) {
-    res.json({
-      status: 'ERROR',
-      message: 'code not specified'
-    });
-    return;
-  }
+// app.get('/________', (req, res) => {
+//   let code = req.query.code || null;
+//   /** send code to the client */
+//   if(!code) {
+//     res.json({
+//       status: 'ERROR',
+//       message: 'code not specified'
+//     });
+//     return;
+//   }
   
-  /** request body */
-  const body = {
-    grant_type: 'authorization_code',
-    //"Content-Type": "application/x-www-form-urlencoded",
-    code: code,
-    redirect_uri: 'https://moosify.herokuapp.com/gotUser', /** KEEEEP LIVING ON DREEEAAMS! */
-    client_id: process.env.CLIENT_ID,
-    client_secret: process.env.CLIENT_SECRET
-  }
+//   /** request body */
+//   const body = {
+//     grant_type: 'authorization_code',
+//     //"Content-Type": "application/x-www-form-urlencoded",
+//     code: code,
+//     redirect_uri: 'https://moosify.herokuapp.com/gotUser', /** KEEEEP LIVING ON DREEEAAMS! */
+//     client_id: process.env.CLIENT_ID,
+//     client_secret: process.env.CLIENT_SECRET
+//   }
 
 
-  /** send POST request to Spitify Web API */
-  fetch('https://accounts.spotify.com/api/token', {
-    method: 'POST',
-    body: querystring.stringify(body)
-  })
-  .then(response => response.text())
-  .then(text => console.log(text))
-  .catch(err => console.log("Error: ", err));
-  /** insert into DB */
-  //let accessToken = await apiResponse.
-  //let refreshToken = await apiResponse.refreshToken;
-  //res.send('API response: ', apiResponse);
-  //res.send('refresh token: ', refreshToken);
-  /** get username and id from the Spotify Web API */
-  // reuest here ...
-  /** insert new user in databse */
-  // ID | Username | access_token | user:object:stream
-  /** Redirect to Mood (Mood-o-meter) */
-});
+//   /** send POST request to Spitify Web API */
+//   fetch('https://accounts.spotify.com/api/token', {
+//     method: 'POST',
+//     body: querystring.stringify(body)
+//   })
+//   .then(response => response.text())
+//   .then(text => console.log(text))
+//   .catch(err => console.log("Error: ", err));
+//   /** insert into DB */
+//   //let accessToken = await apiResponse.
+//   //let refreshToken = await apiResponse.refreshToken;
+//   //res.send('API response: ', apiResponse);
+//   //res.send('refresh token: ', refreshToken);
+//   /** get username and id from the Spotify Web API */
+//   // reuest here ...
+//   /** insert new user in databse */
+//   // ID | Username | access_token | user:object:stream
+//   /** Redirect to Mood (Mood-o-meter) */
+// });
 
 app.get("/mood", (req, res) => {
   res.send("Application flow worked.")
