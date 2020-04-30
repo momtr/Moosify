@@ -19,11 +19,11 @@
         /** use NPM module */
         const admin = require('firebase-admin');
         /** retrieve credentails from json file */
-        const serviceAccount = require('./credentials/moosify.json');
+        const serviceAccount = require('./credentials/adminSDK.json');
         /** initialize the app */
         admin.initializeApp({
             credential: admin.credential.cert(serviceAccount),
-            databaseURL: 'https://moosify-832c9.firebaseio.com'
+            databaseURL: 'https://emojis-27792.firebaseio.com'
         });
         
         /** create the database */
@@ -49,6 +49,23 @@
      */
     async getData(table) {
         return await this.ref.child(table).once('value').then(data => data.val());
+    }
+
+    /**
+     * @description Downloader for database - downloads file containing JSON data
+     * @author Mitterdorfer <mitterdorfer.moritz@gmail.com>
+     * @version 0.0.1
+     * @param {String} filename the name of the file
+     * @param {String} table the root node 
+     */
+    async downloadJSON(filename, table) {
+        if(!filename) filename = Date.now() + '.json';
+        const fs = require('fs');
+        let data = await this.getData(table);
+        fs.writeFile(filename, JSON.stringify(data), err => {
+            if(err) console.log(err);
+            else console.log(`downloaded file ${filename}`);
+        });
     }
 
 }
