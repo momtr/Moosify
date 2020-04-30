@@ -1,4 +1,4 @@
-# Moodify
+# Moosify
 
 Welcome to our web app ;) <br />
 🎉💿🎵
@@ -14,13 +14,14 @@ We want to create a webapplication which uses the Spotify Web API to recommend s
 Cien, Alex, Moritz 
 
 ## Setup
-- `Server`: glitch.me 
-- `Code`: github (Branch Glitch!!!)
+- `Server`: Heroku
+- `Database`: Google Firebase
+- `Code`: GitHub
 
 ## Technology
-- React.js (frontend; grommet library)
+- React.js (frontend)
 - Node.js using express (backend)
-- MySQL database
+- NoSQL database
 - Spotify API (interface)
 
 ## Design
