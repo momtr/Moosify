@@ -4,6 +4,7 @@
  * @version 0.0.1
  * @date 04/2020
  * @description database connection (Google Firebase)
+ * @name moosify-832c9
  */
 
 
@@ -19,11 +20,11 @@
         /** use NPM module */
         const admin = require('firebase-admin');
         /** retrieve credentails from json file */
-        const serviceAccount = require('./credentials/adminSDK.json');
+        const serviceAccount = require('./credentials/moosify.json');
         /** initialize the app */
         admin.initializeApp({
             credential: admin.credential.cert(serviceAccount),
-            databaseURL: 'https://emojis-27792.firebaseio.com'
+            databaseURL: 'https://moosify-832c9.firebaseio.com'
         });
         
         /** create the database */
