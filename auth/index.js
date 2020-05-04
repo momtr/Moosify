@@ -71,7 +71,7 @@ router.get("/gotUser", (req, res, next) => {
         json: true
     };
 
-    request.post(authOptions, (error, response, body) => {
+    request.post(authOptions, async (error, response, body) => {
         if (!error && response.statusCode === 200) {
             let access_token = body.access_token;
             let refresh_token = body.refresh_token;
@@ -79,9 +79,10 @@ router.get("/gotUser", (req, res, next) => {
             // use the access token to access the Spotify Web API
             res.cookie('access_token', access_token, { maxAge: 900000, httpOnly: true });
             res.cookie('refresh_token', refresh_token, { maxAge: 900000, httpOnly: true });
-            // res.redirect('/mood');
+            res.redirect('/mood');
             
-            SpotifyAPI.getCurrentUserObject(access_token).then(data => res.send(JSON.stringify(data)));
+            let userObject = await SpotifyAPI.getCurrentUserObject(access_token);
+            db.insertData('users', userObject.id, userObject);
 
         } else {
             console.log("error occured: ", error);
