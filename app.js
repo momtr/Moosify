@@ -29,17 +29,15 @@ app.use('/auth', auth);
 
 app.get('/mood', (req, res) => {
   let access_token = req.cookies.access_token;
-  res.send("Application flow worked.")
+  res.sendFile(path.join(__dirname+'/client/views/mood.html'));
 });
 
 /** 
  * called if no enpoint '/..' matches the endpoint specified in the URL 
- *
+ */
 app.get('*', (req, res) => {
-  res.send('Page not found');
+  res.sendFile(path.join(__dirname+'/client/views/PageNotFound404.html'));
 });
-
-*/
 
 
 const port = process.env.PORT || 7000;
