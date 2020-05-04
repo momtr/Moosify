@@ -36,7 +36,7 @@ app.get('/mood', (req, res) => {
  * called if no enpoint '/..' matches the endpoint specified in the URL 
  */
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname+'/client/views/PageNotFound404.html'));
+  res.sendFile(path.join(__dirname+'/client/views/pageNotFound404.html'));
 });
 
 
