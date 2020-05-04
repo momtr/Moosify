@@ -8,11 +8,6 @@
 
 /** ========================= Modules ========================= */ 
 /**
- * @description Firebase Database
- */
-const firebaseDB = require('./libs/database/database.js');
-const db = new firebaseDB.FirebaseRealTime();
-/**
  * @description express is used for the server
  */
 const express = require('express');
