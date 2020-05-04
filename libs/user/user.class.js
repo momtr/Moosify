@@ -6,7 +6,7 @@
  * @description class for storing/retrieving user data from the DB
  */
 
-class UserDatabase {
+class UserStorage {
 
     /**
      * @description returns user object from database

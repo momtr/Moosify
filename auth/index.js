@@ -11,7 +11,7 @@
   * TODO:
   *     - [ ] Cookies
   *     - [ ] Respone -> Moodometer
-  *     - [ ] Database via User Object
+  *     - [X] Database via User Object
   *     - [ ] Requests via SpotifyAPI library
   */
 
@@ -22,7 +22,7 @@ const querystring = require('querystring');
 const cookieParser = require('cookie-parser');
 const scopes = "user-read-private user-read-email user-read-recently-played";
 
-const UserDB = require('../libs/user/user.class')();
+const UserStorage = require('../libs/user/user.class');
 
 const router = express.Router();
 router.use(cookieParser());
@@ -87,7 +87,7 @@ router.get("/gotUser", (req, res, next) => {
             // use the access token to access the Spotify Web API
             request.get(options, (error, response, body) => {
                 //push to db
-                UserDB.storeUser(body);
+                UserStorage.storeUser(body);
             }); 
         } else {
             console.log("error occured: ", error);
