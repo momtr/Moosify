@@ -39,4 +39,4 @@ class UserStorage {
 
 }
 
-module.exports = UserDatabase;
+module.exports = UserStorage;
