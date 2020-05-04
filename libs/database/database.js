@@ -19,7 +19,7 @@
         /** use NPM module */
         const admin = require('firebase-admin');
         /** retrieve credentails from json file */
-        const serviceAccount = require('./credentials/adminSDK.json');
+        const serviceAccount = require('./credentials/moosify.json');
         /** initialize the app */
         admin.initializeApp({
             credential: admin.credential.cert(serviceAccount),
