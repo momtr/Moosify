@@ -97,7 +97,6 @@ router.get("/gotUser", (req, res, next) => {
             }));
         }
     });
-    next();
 });
 
 module.exports = router;
