@@ -66,7 +66,7 @@ router.get("/gotUser", (req, res, next) => {
             // use the access token to access the Spotify Web API
             // res.cookie('access_token', access_token, { maxAge: 900000, httpOnly: true });
             // res.cookie('refresh_token', refresh_token, { maxAge: 900000, httpOnly: true });
-            res.redirect('/mood');
+            // res.redirect('/mood');
             
             var options = {
                 url: 'https://api.spotify.com/v1/me',
