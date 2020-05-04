@@ -14,7 +14,7 @@ const cookieParser = require('cookie-parser');
 const scopes = "user-read-private user-read-email user-read-recently-played";
 
 const firebase = require('../libs/database/database');
-const db = firebase.FirebaseRealTime();
+const db = new firebase.FirebaseRealTime();
 
 const router = express.Router();
 router.use(cookieParser());
