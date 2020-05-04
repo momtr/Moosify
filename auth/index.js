@@ -11,7 +11,7 @@
   * TODO:
   *     - [ ] Cookies
   *     - [ ] Respone -> Moodometer
-  *     - [X] Database via User Object
+  *     - [ ] Database via User Object -> does not work!!!
   *     - [ ] Requests via SpotifyAPI library
   */
 
