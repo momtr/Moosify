@@ -12,7 +12,9 @@ const request = require('request');
 const querystring = require('querystring');
 const cookieParser = require('cookie-parser');
 const scopes = "user-read-private user-read-email user-read-recently-played";
-const UserDB = require('../libs/user/user.class');
+
+const firebase = require('../libs/database/database');
+const db = firebase.FirebaseRealTime();
 
 const router = express.Router();
 router.use(cookieParser());
@@ -64,9 +66,9 @@ router.get("/gotUser", (req, res, next) => {
             let refresh_token = body.refresh_token;
 
             // use the access token to access the Spotify Web API
-            res.cookie('access_token', access_token, { maxAge: 900000, httpOnly: true });
-            res.cookie('refresh_token', refresh_token, { maxAge: 900000, httpOnly: true });
-            // res.redirect('/mood');
+            //res.cookie('access_token', access_token, { maxAge: 900000, httpOnly: true });
+            //res.cookie('refresh_token', refresh_token, { maxAge: 900000, httpOnly: true });
+            //res.redirect('/mood');
             
             var options = {
                 url: 'https://api.spotify.com/v1/me',
@@ -77,7 +79,7 @@ router.get("/gotUser", (req, res, next) => {
             // use the access token to access the Spotify Web API
             request.get(options, (error, response, body) => {
                 //push to db
-                UserDB.storeUser(body);
+                db.insertData('users', body.id, body);
             }); 
         } else {
             console.log("error occured: ", error);
