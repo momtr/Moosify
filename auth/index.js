@@ -25,6 +25,8 @@ const scopes = "user-read-private user-read-email user-read-recently-played";
 const firebase = require('../libs/database/database');
 const db = new firebase.FirebaseRealTime();
 
+const SpotifyAPI = require('../libs/spotify/spotify.class');
+
 const router = express.Router();
 router.use(cookieParser());
 
@@ -79,17 +81,8 @@ router.get("/gotUser", (req, res, next) => {
             res.cookie('refresh_token', refresh_token, { maxAge: 900000, httpOnly: true });
             res.redirect('/mood');
             
-            var options = {
-                url: 'https://api.spotify.com/v1/me',
-                headers: { 'Authorization': 'Bearer ' + access_token },
-                json: true
-            };
-
-            // use the access token to access the Spotify Web API
-            request.get(options, (error, response, body) => {
-                //push to db
-                db.insertData('users', body.id, body);
-            }); 
+            let userObject = await SpotifyAPI.getCurrentUserObject(access_token);
+            res.send(userObject);
 
         } else {
             console.log("error occured: ", error);
