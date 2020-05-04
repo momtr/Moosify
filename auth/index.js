@@ -91,7 +91,10 @@ router.get("/gotUser", (req, res, next) => {
             }); 
         } else {
             console.log("error occured: ", error);
-            sendResponseMessage(res, 10003, "Could not get access_token from API");
+            res.send(JSON.stringify({
+                status: 'error',
+                message: 'Could not get access_token from API'
+            }));
         }
     });
     next();
