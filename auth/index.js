@@ -81,8 +81,7 @@ router.get("/gotUser", (req, res, next) => {
             res.cookie('refresh_token', refresh_token, { maxAge: 900000, httpOnly: true });
             res.redirect('/mood');
             
-            let userObject = await SpotifyAPI.getCurrentUserObject(access_token);
-            res.send(userObject);
+            SpotifyAPI.getCurrentUserObject(access_token).then(data => res.send(JSON.stringify(data)));
 
         } else {
             console.log("error occured: ", error);
