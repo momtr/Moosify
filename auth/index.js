@@ -8,13 +8,13 @@
 
 
 const express = require('express');
-const path = require('path');
-const fetch = require('node-fetch');
 const request = require('request');
 const querystring = require('querystring');
-const router = express.Router();
 const scopes = "user-read-private user-read-email user-read-recently-played";
 const UserDB = require('../libs/user/user.class');
+
+const router = express.Router();
+router.use(express.cookieParser());
 
 /** path: auth/redirect */
 router.get('/redirect', (req, res, next) => {
@@ -63,8 +63,8 @@ router.get("/gotUser", (req, res, next) => {
             let refresh_token = body.refresh_token;
 
             // use the access token to access the Spotify Web API
-            res.cookie('access_token', access_token);
-            res.cookie('refresh_token', refresh_token);
+            res.cookie('access_token', access_token, { maxAge: 900000, httpOnly: true });
+            // res.cookie('refresh_token', refresh_token, { maxAge: 900000, httpOnly: true });
             res.redirect('/mood');
             
             var options = {
