@@ -23,7 +23,7 @@
         /** initialize the app */
         admin.initializeApp({
             credential: admin.credential.cert(serviceAccount),
-            databaseURL: 'https://emojis-27792.firebaseio.com'
+            databaseURL: 'https://moosify-832c9.firebaseio.com'
         });
         
         /** create the database */
