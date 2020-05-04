@@ -10,11 +10,12 @@
 const express = require('express');
 const request = require('request');
 const querystring = require('querystring');
+const cookieParser = require('cookie-parser');
 const scopes = "user-read-private user-read-email user-read-recently-played";
 const UserDB = require('../libs/user/user.class');
 
 const router = express.Router();
-router.use(express.cookieParser());
+router.use(cookieParser());
 
 /** path: auth/redirect */
 router.get('/redirect', (req, res, next) => {
