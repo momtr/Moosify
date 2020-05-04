@@ -35,7 +35,10 @@ router.get("/gotUser", (req, res, next) => {
 
     if (!code) {
         console.log("code is not there!");
-        sendResponseMessage(res, 10001, "Code is not given");
+        res.send(JSON.stringify({
+            status: 'error',
+            message: 'code is not given'
+        }));
         return;
     }
 
@@ -56,28 +59,26 @@ router.get("/gotUser", (req, res, next) => {
 
     request.post(authOptions, (error, response, body) => {
         if (!error && response.statusCode === 200) {
-        let access_token = body.access_token;
-        let refresh_token = body.refresh_token;
+            let access_token = body.access_token;
+            let refresh_token = body.refresh_token;
 
-        // use the access token to access the Spotify Web API
-        res.cookie('access_token', access_token);
-        res.cookie('refresh_token', refresh_token);
-        res.redirect('/mood');
-        
-        var options = {
-            url: 'https://api.spotify.com/v1/me',
-            headers: { 'Authorization': 'Bearer ' + access_token },
-            json: true
-        };
+            // use the access token to access the Spotify Web API
+            res.cookie('access_token', access_token);
+            res.cookie('refresh_token', refresh_token);
+            res.redirect('/mood');
+            
+            var options = {
+                url: 'https://api.spotify.com/v1/me',
+                headers: { 'Authorization': 'Bearer ' + access_token },
+                json: true
+            };
 
-        // use the access token to access the Spotify Web API
-        request.get(options, (error, response, body) => {
-            //push to db
-            UserDB.storeUser(body);
-        });
-        
-        } 
-        else {
+            // use the access token to access the Spotify Web API
+            request.get(options, (error, response, body) => {
+                //push to db
+                UserDB.storeUser(body);
+            }); 
+        } else {
             console.log("error occured: ", error);
             sendResponseMessage(res, 10003, "Could not get access_token from API");
         }
