@@ -1,6 +1,4 @@
 const fetch = require('node-fetch');
-const firebaseDB = require('../database/database');
-const db = new firebaseDB.FirebaseRealTime();
 
 class SpotifyAPI {
     
