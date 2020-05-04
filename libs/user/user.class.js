@@ -16,6 +16,7 @@ class UserStorage {
         const db = new firebaseDB.FirebaseRealTime();
         /** get his songs */
         return await db.getData('users/' + userID);
+        b.off();
     }
 
     /**
@@ -25,6 +26,7 @@ class UserStorage {
         const firebaseDB = require('../database/database');
         const db = new firebaseDB.FirebaseRealTime();
         return await db.getData(`users/${userID}/recentlyPlayedSongs`);
+        b.off();
     }
 
     /**
@@ -35,6 +37,7 @@ class UserStorage {
         const db = new firebaseDB.FirebaseRealTime();
         json.recentlyPlayedSongs = [0];
         db.insertData('users', json.id, json);
+        db.off();
     }
 
 }
