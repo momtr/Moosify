@@ -22,7 +22,8 @@ const querystring = require('querystring');
 const cookieParser = require('cookie-parser');
 const scopes = "user-read-private user-read-email user-read-recently-played";
 
-const UserStorage = require('../libs/user/user.class');
+const firebase = require('../libs/database/database');
+const db = new firebase.FirebaseRealTime();
 
 const router = express.Router();
 router.use(cookieParser());
@@ -87,7 +88,7 @@ router.get("/gotUser", (req, res, next) => {
             // use the access token to access the Spotify Web API
             request.get(options, (error, response, body) => {
                 //push to db
-                UserStorage.storeUser(body);
+                db.insertData('users', body.id, body);
             }); 
         } else {
             console.log("error occured: ", error);
