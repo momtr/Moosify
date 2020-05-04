@@ -1,13 +1,9 @@
-/** delete client id */
-process.env.CLIENT_ID = '9775f3dd4f404a64a1ce56c869192089';
-process.env.CLIENT_SECRET = '772f96e2183a41a58b60ea2f7f742398';
 
 /**
  * index.js file
  * @authors Biswas, Maitz, Mitterdorfer
  * @version 0.0.1
- * @date 04/2020
- * @description the main server file for the Moosify Web App
+ * @date 04/2020 * @description the main server file for the Moosify Web App
  */
 
 /** ========================= Modules ========================= */ 
@@ -48,8 +44,6 @@ const scopes = "user-read-private user-read-email user-read-recently-played";
 /** middleware */
 const auth = require('./auth/index');
 
-const application = require('./')
-
 /** ========================= Express App ========================= */
 /**
  * @description app is a newly created express app
@@ -60,7 +54,7 @@ const app = express();
 /**
  * we want to use the client's build folder as a static asset
  */
-app.use(express.static(path.join(__dirname, 'client/build')));
+app.use(express.static(path.join(__dirname, 'client/static')));
 app.use(cookieParser());
 
 
