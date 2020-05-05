@@ -26,27 +26,31 @@ const getRouter = (db) => {
     router.get('/recommendedSongs/:accessToken', async (req, res, next) => {
         let accessToken = req.params.accessToken || 0;
         let moodString = req.query.q || '';
+        let numberOfTracks = req.query.num || 10;
         /** get the username */
         let userObject = await SpotifyAPI.getCurrentUserObject(accessToken);
         let userID = userObject.id;
         /** get the user's songs from the database */
         let usersTracks = await db.getData(`users/${userID}/audioFeatures`);
+        if(!usersTracks) {
+            res.send(JSON.stringify({
+                status: 'error',
+                message: 'something did not work, maybe the user\'s accessToken has already expired or the user ist not registered'
+            }));
+            return;
+        }
         /** do sentiment analysis with the query string */
         let mood = await analyzer.getScore(moodString);
         /** sort tracks according to mood */
         let normalizedMood = normalizeMood(mood);
         /** now the mood is between -5 and +5, however, we want it to be in range [0;1] */
-        res.send(JSON.stringify({
-            songs: usersTracks,
-            type: typeof usersTracks
-        }))
-        let tracks = sortTracks(JSON.parse(usersTracks), normalizedMood);
-       //res.send(JSON.stringify({ 
-       //    status: 'success',
-       //    message: 'your received all tracks in the track object',
-       //    data: { tracks, normalizedMood }
-       //}));
-    });//
+        let tracks = sortTracks(usersTracks, normalizedMood, numberOfTracks);
+        res.send(JSON.stringify({ 
+            status: 'success',
+            message: 'your received all tracks in the track object',
+            data: { tracks, normalizedMood }
+        }));
+    }); 
 
     return router;
 };
