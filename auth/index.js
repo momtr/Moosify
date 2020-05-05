@@ -9,11 +9,11 @@
 
  /**
   * TODO:
-  *     - [ ] Cookies
-  *     - [ ] Respone -> Moodometer
-  *     - [ ] Database via User Object -> does not work!!!
+  *     - [X] Cookies
+  *     - [X] Respone -> Moodometer
+  *     - [X] Database via User Object -> does not work!!!
   *     - [X] Requests via SpotifyAPI library
-  *     - [ ] All reqs via SpotifyAPI library
+  *     - [X] All reqs via SpotifyAPI library
   */
 
 

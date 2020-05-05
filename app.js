@@ -13,6 +13,7 @@ const app = express();
 
 /** middleware */
 const auth = require('./auth/index');
+const api = require('./api/moodometer');
 
 app.use(express.static(path.join(__dirname, 'client/static')));
 app.use(cookieParser());
@@ -22,6 +23,7 @@ app.get('/', (req, res) => {
 });
 
 app.use('/auth', auth);
+app.use('/api/v1', api);
 
 app.get('/mood', (req, res) => {
   let access_token = req.cookies.access_token;
