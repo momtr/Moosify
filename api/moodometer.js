@@ -35,7 +35,8 @@ const getRouter = (db) => {
         let mood = await analyzer.getScore(moodString);
         /** sort tracks according to mood */
         let normalizedMood = normalizeMood(mood);
-        let tracks = sortTracks(usersTracks, normalizedMood);
+        /** now the mood is between -5 and +5, however, we want it to be in range [0;1] */
+        let tracks = sortTracks(JSON.parse(usersTracks), normalizedMood);
         res.send(JSON.stringify({ 
             status: 'success',
             message: 'your received all tracks in the track object',
