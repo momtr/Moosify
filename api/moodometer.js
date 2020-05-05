@@ -13,7 +13,7 @@ const cookieParser = require('cookie-parser');
 const SpotifyAPI = require('../libs/spotify/spotify.class');
 
 const SentimentAnalysis = require('../libs/sentimentAnalysis/sentimentAnalysis');
-const analyzer = new SentimentAnalysis('./AFINN-111.json'); // we are already in the lib directory!
+const analyzer = new SentimentAnalysis(); 
 
 const getRouter = (db) => {
     const router = express.Router();
