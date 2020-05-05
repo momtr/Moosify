@@ -9,7 +9,7 @@ const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 
-const firebase = require('../libs/database/database');
+const firebase = require('./libs/database/database');
 const db = new firebase.FirebaseRealTime();
 
 const app = express();
