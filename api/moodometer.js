@@ -15,6 +15,8 @@ const SpotifyAPI = require('../libs/spotify/spotify.class');
 const SentimentAnalysis = require('../libs/sentimentAnalysis/sentimentAnalysis');
 const analyzer = new SentimentAnalysis(); 
 
+const sortTracks = require('../libs/spotify/trackSorter');
+
 const getRouter = (db) => {
     const router = express.Router();
     router.use(cookieParser());
@@ -30,7 +32,13 @@ const getRouter = (db) => {
         let usersTracks = await db.getData(`users/${userID}/audioFeatures`);
         /** do sentiment analysis with the query string */
         let mood = await analyzer.getScore(moodString);
-        res.send(JSON.stringify({ mood }));
+        /** sort tracks according to mood */
+        let tracks = sortTracks(usersTracks, mood);
+        res.send(JSON.stringify({ 
+            status: 'success',
+            message: 'your received all tracks in the track object',
+            data: tracks
+        }));
     });
 
     return router;
