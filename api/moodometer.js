@@ -22,7 +22,7 @@ const getRouter = (db) => {
     /** path: /api/v1/recommendedSongs/accessToken */
     router.get('/recommendedSongs/:accessToken', async (req, res, next) => {
         let accessToken = req.params.accessToken || 0;
-        let moodString = req.params.q || '';
+        let moodString = req.query.q || '';
         /** get the username */
         let userObject = await SpotifyAPI.getCurrentUserObject(accessToken);
         let userID = userObject.id;
