@@ -3,7 +3,7 @@
  * @authors Biswas, Maitz, Mitterdorfer
  * @version 0.0.1
  * @date 05/2020
- * @description the middle ware server file for the Moosify Web App
+ * @description the middle ware server file for the API of Moosify Web App
  */
 
 
@@ -16,6 +16,7 @@ const SentimentAnalysis = require('../libs/sentimentAnalysis/sentimentAnalysis')
 const analyzer = new SentimentAnalysis(); 
 
 const sortTracks = require('../libs/spotify/trackSorter');
+const normalizeMood = require('../libs/sentimentAnalysis/moodNormalizer');
 
 const getRouter = (db) => {
     const router = express.Router();
@@ -33,11 +34,12 @@ const getRouter = (db) => {
         /** do sentiment analysis with the query string */
         let mood = await analyzer.getScore(moodString);
         /** sort tracks according to mood */
-        let tracks = sortTracks(usersTracks, mood);
+        let normalizedMood = normalizeMood(mood);
+        let tracks = sortTracks(usersTracks, normalizedMood);
         res.send(JSON.stringify({ 
             status: 'success',
             message: 'your received all tracks in the track object',
-            data: tracks
+            data: { tracks, normalizedMood }
         }));
     });
 
