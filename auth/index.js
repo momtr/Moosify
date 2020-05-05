@@ -86,7 +86,6 @@ router.get("/gotUser", (req, res, next) => {
             let userObject = await SpotifyAPI.getCurrentUserObject(access_token);
             /** get user's recently played songs + audio features */
             let recentlyPlayedTrackIDs = await SpotifyAPI.getRecentlyPlayed(access_token, 50);
-            db.insertData('tracks', Date.now(), recentlyPlayedTrackIDs);
             let trackIDs = SpotifyAPI.getSongIDsFromTrackArray(recentlyPlayedTrackIDs);
             let audioFeatures = await SpotifyAPI.getAudioFeaturesOfTracks(access_token, trackIDs);
             let user = { userObject, audioFeatures };

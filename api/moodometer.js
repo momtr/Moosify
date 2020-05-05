@@ -22,7 +22,7 @@ const router = express.Router();
 router.use(cookieParser());
 
 /** path: /api/v1/recommendedSongs/accessToken */
-router.get('/recommendedSongs/:accessToken', (req, res, next) => {
+router.get('/recommendedSongs/:accessToken', async (req, res, next) => {
     let accessToken = req.params.accessToken;
     /** get the username */
     let userObject = await SpotifyAPI.getCurrentUserObject(accessToken);
