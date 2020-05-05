@@ -37,7 +37,8 @@ const getRouter = (db) => {
         let normalizedMood = normalizeMood(mood);
         /** now the mood is between -5 and +5, however, we want it to be in range [0;1] */
         res.send(JSON.stringify({
-            songs: JSON.parse(usersTracks)
+            songs: usersTracks,
+            type: typeof usersTracks
         }))
         let tracks = sortTracks(JSON.parse(usersTracks), normalizedMood);
        //res.send(JSON.stringify({ 
