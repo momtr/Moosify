@@ -9,6 +9,9 @@ const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 
+const firebase = require('../libs/database/database');
+const db = new firebase.FirebaseRealTime();
+
 const app = express();
 
 /** middleware */
@@ -22,8 +25,8 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname+'/client/views/index.html'));
 });
 
-app.use('/auth', auth);
-app.use('/api/v1', api);
+app.use('/auth', auth(db));
+app.use('/api/v1', api(db));
 
 app.get('/mood', (req, res) => {
   let access_token = req.cookies.access_token;
