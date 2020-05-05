@@ -82,8 +82,14 @@ router.get("/gotUser", (req, res, next) => {
             res.cookie('refresh_token', refresh_token, { maxAge: 900000, httpOnly: true });
             res.redirect('/mood');
             
+            /** get user data */
             let userObject = await SpotifyAPI.getCurrentUserObject(access_token);
-            db.insertData('users', userObject.id, userObject);
+            /** get user's recently played songs + audio features */
+            let recentlyPlayedTrackIDs = await SpotifyAPI.getRecentlyPlayed(access_token, 70);
+            let trackIDs = SpotifyAPI.getSongIDsFromTrackArray(recentlyPlayedTrackIDs);
+            let audioFeatures = SpotifyAPI.getAudioFeaturesOfTracks(access_token, trackIDs);
+            let user = { userData, audioFeatures };
+            db.insertData('users', userObject.id, user);
 
         } else {
             console.log("error occured: ", error);

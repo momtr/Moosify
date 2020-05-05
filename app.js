@@ -7,11 +7,7 @@
 
 const express = require('express');
 const path = require('path');
-const fetch = require('node-fetch');
-const request = require('request');
-const querystring = require('querystring');
 const cookieParser = require('cookie-parser');
-const scopes = "user-read-private user-read-email user-read-recently-played";
 
 const app = express();
 
