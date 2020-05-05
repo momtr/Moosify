@@ -1,4 +1,5 @@
 const fetch = require('node-fetch');
+const qs = require('qs');
 
 class SpotifyAPI {
     
@@ -30,9 +31,12 @@ class SpotifyAPI {
 
     static async getRecentlyPlayed(access_token, numberOfSongs){
         try{
-            const recentlyPlayed = await fetch(`https://api.spotify.com/v1/me/player/recently-played/?limit=${numberOfSongs}`, {
+            const recentlyPlayed = await fetch(`https://api.spotify.com/v1/me/player/recently-played?limit=${numberOfSongs}`, {
             method: 'GET',
-            headers: { Authorization: "Bearer " + access_token}
+            headers: { 
+                Authorization: "Bearer " + access_token,
+                Accept: "application/json"
+            }
             })
             let json = await recentlyPlayed.json();
             return json.items;
@@ -53,12 +57,12 @@ class SpotifyAPI {
     static async getAudioFeaturesOfTracks(access_token, id_array){
         let comma_sepperated_ids = id_array.join(",");
         try{
-            const audio_features = await fetch(`https://api.spotify.com/v1/audio-features/${comma_sepperated_ids}`, {
+            const audio_features = await fetch(`https://api.spotify.com/v1/audio-features?ids=${comma_sepperated_ids}`, {
                 method: 'GET',
                 headers: { Authorization: "Bearer " + access_token}
             })
             let json = await audio_features.json();
-            return json;
+            return json.audio_features;
         }
         catch(error){
             console.log(error);
@@ -68,3 +72,4 @@ class SpotifyAPI {
 }
 
 module.exports = SpotifyAPI;
+
