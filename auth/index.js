@@ -90,7 +90,7 @@ router.get("/gotUser", (req, res, next) => {
             let trackIDs = SpotifyAPI.getSongIDsFromTrackArray(recentlyPlayedTrackIDs);
             let audioFeatures = await SpotifyAPI.getAudioFeaturesOfTracks(access_token, trackIDs);
             let user = { userData, audioFeatures };
-            db.insertData('users', userObject.id, userObject);
+            db.insertData('users', userObject.id, user);
 
         } else {
             console.log("error occured: ", error);
