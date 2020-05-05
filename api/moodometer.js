@@ -26,6 +26,8 @@ const getRouter = (db) => {
         let usersTracks = await db.getData(`users/${userID}/audioFeatures`);
         res.send(usersTracks)
     });
+
+    return router;
 };
 
 

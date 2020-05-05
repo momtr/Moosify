@@ -100,6 +100,8 @@ const getRouter = (db) => {
         });
         
     });
+
+    return router;
     
 }
 
