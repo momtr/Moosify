@@ -59,10 +59,22 @@ const getRouter = (db) => {
         let userProfile = await SpotifyAPI.getCurrentUserObject(accessToken);
         res.send(JSON.stringify({
             status: 'success',
-            message: 'got user profile',
+            message: 'no server error (check spotify data as well)',
             data: userProfile
         }));
-    })
+    });
+
+    router.post('/library/:accessToken', async (req, res, next) => {
+        let accessToken = req.params.accessToken || 0;
+        let trackIDs = req.query.ids;
+        /** push songs to library */
+        let apiResponse = await SpotifyAPI.pushToLibrary(accessToken, trackIDs);
+        res.send(JSON.stringify({
+            status: 'success',
+            message: 'tracks were pushed to the libary',
+            data: apiResponse
+        }));
+    });
 
     return router;
 };

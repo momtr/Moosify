@@ -91,6 +91,24 @@ class SpotifyAPI {
         }
     }
 
+    static async pushToLibrary(access_token, comma_sepperated_ids) {
+        try{
+            const audio_features = await fetch(`https://api.spotify.com/v1/me/tracks?ids=${comma_sepperated_ids}`, {
+                method: 'PUT',
+                headers: { 
+                    Authorization: "Bearer " + access_token,
+                    Accept: 'application/json',
+                    'Content-Type': application/json
+                }
+            })
+            let json = await audio_features.json();
+            return json.audio_features;
+        }
+        catch(error){
+            console.log(error);
+        }
+    }
+
 }
 
 module.exports = SpotifyAPI;

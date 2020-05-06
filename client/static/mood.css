@@ -1,0 +1,15 @@
+
+/**  Mood Page      **/
+
+    .mainContainer{
+        display: flex;
+        flex-direction: column;
+    }
+
+    #getTracks{
+        margin-left: 40%;
+        font-size: 12px;
+        font-weight: 1000;
+    }
+
+/**/
