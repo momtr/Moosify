@@ -31,6 +31,9 @@
         display: inline-block;
         margin-left: 10px;
     }
+    .startButton:hover{
+        cursor: pointer;
+    }
 /**/
 
 
