@@ -1,26 +1,44 @@
+/**  Landing Page    **/
 
-html, body{
-    height: 100%;
-    width: 100%;
-    margin: 0;
-}
-.mainContainer{
-    width: 100%;
-    height: 100%;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-.mainContainer > *{
-    margin: auto 0;
-}
-.wrapper{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
+    html, body{
+        height: 100%;
+        width: 100;
+        margin: 0;
+    }
+    .mainContainer{
+        width: 100%;
+        height: 100%;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .mainContainer > *{
+        margin: auto 0;
+    }
+    .wrapper{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
 
-#getTracks{
-    margin-left: 40%;
-}
+    #welcome{
+        display: inline-block;
+    }
+
+    #handWave{
+        font-size: 50px;
+        display: inline-block;
+        margin-left: 10px;
+    }
+/**/
+
+
+/**  Mood Page      **/
+
+    #getTracks{
+        margin-left: 40%;
+    }
+
+    
+/**/

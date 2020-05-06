@@ -12,6 +12,8 @@ const cookieParser = require('cookie-parser');
 const firebase = require('./libs/database/database');
 const db = new firebase.FirebaseRealTime();
 
+const checker = require('./checks/checks');
+
 const app = express();
 
 /** middleware */
@@ -25,12 +27,7 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname+'/client/views/index.html'));
 });
 
-app.use((req,res,next) => {
-  if(req.cookies.access_token == undefined && req.url != '/'){
-    res.redirect('/');
-  }
-  next();
-})
+app.use(checker);
 app.use('/auth', auth(db));
 app.use('/api/v1', api(db));
 

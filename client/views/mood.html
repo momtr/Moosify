@@ -11,22 +11,24 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@ajusa/lit@latest/dist/lit.css" />
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <!-- Stylesheets -->
-    <link rel="stylesheet" href="../static/style.css">
-    <link rel="stylesheet" href="../static/libs/vivify.min.css" type="text/css"/>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="libs/vivify.min.css" type="text/css"/>
 </head>
 <body>
 
     <head>
         <div id="heading">
-            Moosify
+            <h1>Moosify</h1>
         </div>
         <div id="heading-label">
-            👋 Discovery your mood.
+            <h6>👋 Discover your mood.</h6>
         </div>
     </head>
         
     <main>
+        <input id="inputstring" class="card w-100" type="text" placeholder="happy, cheerful, excited, ...">
         <button class="vivify driveInLeft" id="getTracks">Get your Tracks!</button>
+        <div id="tracks"></div>
     </main>
 
     <footer>

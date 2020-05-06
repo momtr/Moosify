@@ -11,11 +11,17 @@
     <!-- Stylesheets -->
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="libs/vivify.min.css" type="text/css"/>
+    
+    <link rel="stylesheet" href="../static/libs/vivify.min.css" type="text/css"/>
+    <link rel="stylesheet" href="../static/style.css">
 </head>
 <body>
     <div class="c mainContainer">
         <div class="wrapper">
-            <h1>👋 Welcome to Moosify!</h1>
+            <div>
+                <h1 id="welcome">Welcome to Moosify!</h1>
+                <span id="handWave" class="vivify hitLeft delay-750">👋</span>
+            </div>
             <h6>You can use Mossify to get the perfect song based on how you feel!</h6>
             <button onClick="window.location.href = '/auth/redirect'" class="btn primary">Get started!</button>
         </div>
