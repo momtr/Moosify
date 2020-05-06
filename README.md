@@ -47,4 +47,4 @@ cute design like the glitch page 🎉🎉
 - We send them to the user
 - He can select which song he wants to add to his library
 - The user can now go into Spotify and listen to the new playlist we have created for him, containing the selected songs
-- Enjoy the Music! U+1F603
+- Enjoy the Music! "U+1F603"
