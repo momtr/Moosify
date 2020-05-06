@@ -46,7 +46,7 @@ const getRouter = (db) => {
         /** now the mood is between -5 and +5, however, we want it to be in range [0;1] */
         let trackFeatures = sortTracks(usersTracks, normalizedMood, numberOfTracks);
         let idArray = SpotifyAPI.getSongIDsFromTrackArray(trackFeatures);
-        let tracks = SpotifyAPI.getSeveralTracks(idArray);
+        let tracks = await SpotifyAPI.getSeveralTracks(idArray);
         res.send(JSON.stringify({ 
             status: 'success',
             message: 'your received all tracks in the track object',
