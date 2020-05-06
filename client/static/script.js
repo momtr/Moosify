@@ -18,11 +18,6 @@ $(document).ready(function() {
 
     $('#getTracks').click(async () => {
 
-        const selectTrack = (id) => { 
-            selectedIDs.push(id);
-            console.log('id', selectedIDs);
-        }
-
         $('#tracks').html('');
 
         let inputString = $('#inputString').val();
@@ -38,7 +33,7 @@ $(document).ready(function() {
 
         for(let i of tracks) {
             let imgURL = i.album.images[0].url;
-            $('#tracks').append(`<div><img src="${imgURL}" onClick="selectTrack('${i.id}')"><h3>${i.name}</h3></div>`)   
+            $('#tracks').append(`<div><img src="${imgURL}" onClick="selectedIDs.push('${i.id}')"><h3>${i.name}</h3></div>`)   
         }
 
         $('#getTracks').hide();

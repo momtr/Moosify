@@ -12,21 +12,26 @@
         flex-direction: column;
     }
 
-    #tracks{
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
+    #inputString{
+        flex-shrink: 4;
     }
 
     #getTracks{
         display: inline-block;
         font-size: 12px;
         font-weight: 1000;
+        flex-shrink: 1;
     }
+
     #selectTracks{
         display: inline-block;
         font-size: 12px;
         font-weight: 1000;
+    }
+
+    #tracks{
+        display: flex;
+        flex-flow: row wrap;
     }
 
 /**/

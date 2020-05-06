@@ -98,7 +98,7 @@ class SpotifyAPI {
                 headers: { 
                     Authorization: "Bearer " + access_token,
                     Accept: 'application/json',
-                    'Content-Type': application/json
+                    'Content-Type': 'application/json'
                 }
             })
             let json = await audio_features.json();
