@@ -10,17 +10,6 @@
  */
 sortTracks = (tracksWithAudioFeatures, moodScore, returnCount = 10) => {
 
-    /** filter them to get unique tracks */
-    let ids = [];
-    tracksWithAudioFeatures.filter(val => {
-        let id = val.id;
-        console.log('sort', id);
-        let ret = ids.includes(id);
-        console.log('includes', ret);
-        ids.push(id);
-        return ret;
-    })
-
     tracksWithAudioFeatures.sort((a, b) => {
         let aMoodDifference = Math.abs(moodScore - a.valence);
         let bMoodDifference = Math.abs(moodScore - b.valence);
