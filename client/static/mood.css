@@ -21,14 +21,42 @@
 
 
     #tracks{
-        /*display: flex;
-        flex-direction: row;*/
-        width: auto;
-        height:210px;
-        border: 13px solid #bed5cd;
-        overflow-x: scroll;
-        overflow-y: hidden;
-        white-space: nowrap;
+        width: 100vh;
+        height: 100vw;
+        overflow-y: auto;
+        overflow-x: hidden;
+        background: #2E2E2E;
+        padding: 30px;
+        -webkit-transform-origin: right top;
+                transform-origin: right top;
+        -webkit-transform: rotate(-90deg) translate3d(0, -100vh, 0);
+                transform: rotate(-90deg) translate3d(0, -100vh, 0);
+    }
+    .tracks > * {
+        -webkit-transform-origin: left top;
+                transform-origin: left top;
+        -webkit-transform: rotate(90deg) translate3d(0, calc(-100vh + 60px), 0);
+                transform: rotate(90deg) translate3d(0, calc(-100vh + 60px), 0);
+    }
+
+    .songItems{
+        width: calc(100vh - 60px);
+        height: calc(100vh - 60px);
+        background: #FDFFFC;
+        position: relative;
+    }
+    .songItems:not(:first-child) {
+        margin-top: 30px;
+    }
+    .songItems img{
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background: no-repeat center center / cover;
+        opacity: .8;
+        background-blend-mode: luminosity;
     }
 
 /**/
