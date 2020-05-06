@@ -6,13 +6,15 @@
  * @description checks for access 
  */
 
+
 const check = (req, res, next) => {
-    if(req.cookies.access_token == undefined && req.url != '/'){
-        console.log('endpoint', req.url);
-        res.redirect('/');
+    if(req.cookies.access_token || req.url === "/" || req.url === "/auth/redirect"){
+         /*  access granted  */
+            next();
     }
     else{
-        next();
+        /*   access denied   */
+            res.redirect('/');
     }
 }
 
