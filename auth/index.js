@@ -77,8 +77,8 @@ const getRouter = (db) => {
                 let refresh_token = body.refresh_token;
 
                 // use the access token to access the Spotify Web API
-                res.cookie('access_token', access_token, { maxAge: 900000, httpOnly: true });
-                res.cookie('refresh_token', refresh_token, { maxAge: 900000, httpOnly: true });
+                res.cookie('access_token', access_token, { maxAge: 900000, httpOnly: false });
+                res.cookie('refresh_token', refresh_token, { maxAge: 900000, httpOnly: false });
                 res.redirect('/mood');
                 
                 /** get user data */
