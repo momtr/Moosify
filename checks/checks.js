@@ -8,6 +8,7 @@
 
 
 const check = (req, res, next) => {
+    console.log(req);
     if(req.cookies.access_token || req.url === "/" || req.url === "/auth/redirect"){
          /*  access granted  */
             next();
