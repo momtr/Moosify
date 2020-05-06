@@ -4,8 +4,6 @@ $(document).ready(function() {
 
     let selectedIDs = [];
 
-    const selectTrack = (id) => selectedIDs.push(id);
-
     const pushSongsToLibrary = async (ids) => {
         let comma_seperated_ids = ids.join(',');
         let access_token = Cookies.get('access_token');
@@ -19,6 +17,11 @@ $(document).ready(function() {
     $('#selectTracks').hide();
 
     $('#getTracks').click(async () => {
+
+        const selectTrack = (id) => { 
+            selectedIDs.push(id);
+            console.log('id', selectedIDs);
+        }
 
         $('#tracks').html('');
 

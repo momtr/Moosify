@@ -19,7 +19,12 @@
     }
 
     #getTracks{
-        margin-left: 40%;
+        display: inline-block;
+        font-size: 12px;
+        font-weight: 1000;
+    }
+    #selectTracks{
+        display: inline-block;
         font-size: 12px;
         font-weight: 1000;
     }
