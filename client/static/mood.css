@@ -77,10 +77,6 @@
         -webkit-box-shadow: 2px 2px 15px 5px #000000; 
         box-shadow: 2px 2px 15px 5px #000000;
     }
-    .songItems:active{
-        animation-name: trackAdded;
-        animation-duration: 1s;
-    }
 
     .item img {
         position: absolute;
