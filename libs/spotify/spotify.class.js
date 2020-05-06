@@ -126,7 +126,7 @@ class SpotifyAPI {
             })
             let json = await createPlaylist.json();
             let playlistID = json.id;
-            return SpotifyAPI.addItemsToPlaylist(access_token, playlistID);
+            return SpotifyAPI.addItemsToPlaylist(access_token, playlistID, trackIDs);
         }
         catch(error){
             console.log(error);
