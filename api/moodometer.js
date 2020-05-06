@@ -66,7 +66,7 @@ const getRouter = (db) => {
 
     router.post('/library/:accessToken', async (req, res, next) => {
         let accessToken = req.params.accessToken || 0;
-        let trackIDs = req.query.ids;
+        let trackIDs = req.query.ids || [];
         /** push songs to library */
         let apiResponse = await SpotifyAPI.pushToLibrary(accessToken, trackIDs);
         res.send(JSON.stringify({
@@ -75,6 +75,18 @@ const getRouter = (db) => {
             data: apiResponse
         }));
     });
+
+    router.post('/playlists/:accessToken', async (req, res, next) => {
+        let accessToken = req.params.accessToken || 0;
+        let trackIDs = req.query.ids || [];
+        let playlistName = req.query.name || 'Moosify';
+        let createPlaylist = await SpotifyAPI.createUserPlaylist(accessToken, playlistName, trackIDs);
+        res.send(JSON.stringify({
+            status: 'success',
+            message: `playlist ${playlistName} has been sucessfully created`,
+            data: createPlaylist
+        }));
+    })
 
     return router;
 };

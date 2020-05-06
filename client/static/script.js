@@ -4,14 +4,21 @@ let selectedIDs = [];
 
 $(document).ready(function() {
 
-    const pushSongsToLibrary = async (ids) => {
+    const pushSongsToLibrary = async (ids, name) => {
         let comma_seperated_ids = ids.join(',');
         let access_token = Cookies.get('access_token');
-        let response = await fetch(`/api/v1/library/${access_token}?ids=${comma_seperated_ids}`, { 
+
+        let library = await fetch(`/api/v1/library/${access_token}?ids=${comma_seperated_ids}`, { 
             method: 'POST'
         });
-        let json = await response.json();
-        return json;
+        let json_library = await library.json();
+        
+        let playlists = await fetch(`/api/v1/playlists/${access_token}?ids=${JSON.stringify(ids)}&name=${name}`, {
+            method: 'POST'
+        });
+        let json_playlists = await playlists.json();
+
+        return { json_library, json_playlists };
     }
 
     $('#selectTracks').hide();
@@ -43,7 +50,8 @@ $(document).ready(function() {
 
     $('#selectTracks').click(async () => {
 
-        let response = await pushSongsToLibrary(selectedIDs);
+        let inputString = $('#inputString').val();
+        let response = await pushSongsToLibrary(selectedIDs, inputString);
         console.log('response', response);
 
     })
