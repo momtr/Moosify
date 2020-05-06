@@ -48,7 +48,7 @@ const getRouter = (db) => {
         res.send(JSON.stringify({ 
             status: 'success',
             message: 'your received all tracks in the track object',
-            data: { tracks, normalizedMood }
+            data: { tracks, normalizedMood, mood, moodString }
         }));
     }); 
 
