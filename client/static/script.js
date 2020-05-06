@@ -1,8 +1,8 @@
 // this is just an example!! 
 
-$(document).ready(function() {
+let selectedIDs = [];
 
-    let selectedIDs = [];
+$(document).ready(function() {
 
     const pushSongsToLibrary = async (ids) => {
         let comma_seperated_ids = ids.join(',');
