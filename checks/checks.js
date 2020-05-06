@@ -8,6 +8,7 @@
 
 const check = (req, res, next) => {
     if(req.cookies.access_token == undefined && req.url != '/'){
+        console.log('endpoint', req.url);
         res.redirect('/');
     }
     else{
