@@ -24,6 +24,18 @@ $(document).ready(function () {
     $('#selectTracks').hide();
 
     $('#getTracks').click(async () => {
+        function formatArtists(array){
+            let resultString;
+            for(let k = 0; k < array.length; k++){
+                if(array.length === 1)
+                    resultString = k.name;
+                else if(k === array.length-1)
+                    resultString += k.name;
+                else
+                    resultString += k.name + ", ";
+            }
+            return resultString;
+        }
 
         $('#tracks').html('');
 
@@ -40,12 +52,12 @@ $(document).ready(function () {
 
         for (let i of tracks) {
             let imgURL = i.album.images[1].url;
-            $('#tracks').append(`<div class="songItems vivify fadeIn"><img src="${imgURL}" onClick="selectedIDs.push('${i.id}')"><h3>${i.name}</h3> | <h3>${i.artists.name.join(", ")}</h3></div>`);
+            let artistString = formatArtists(i.artists);
+            $('#tracks').append(`<div class="songItems vivify fadeIn"><img src="${imgURL}" onClick="selectedIDs.push('${i.id}')"><h3>${i.name}</h3> | <h3>${artistString}</h3></div>`);
         }
 
         $('#getTracks').hide();
         $('#selectTracks').show();
-
     });
 
     $('#selectTracks').click(async () => {
@@ -55,5 +67,4 @@ $(document).ready(function () {
         console.log('response', response);
 
     })
-
 });
