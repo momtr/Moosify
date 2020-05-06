@@ -114,6 +114,11 @@ class SpotifyAPI {
         /** get the user's id */
         let userObject = await SpotifyAPI.getCurrentUserObject(access_token, playlistName);
         let userID = userObject.id;
+
+        console.log('user', JSON.stringify(userObject));
+        console.log('user id', userID);
+        console.log('playlist name', playlistName)
+
         /** send request */
         try{
             const createPlaylist = await fetch(`https://api.spotify.com/v1/users/${userID}/playlists?name=${playlistName}`, {
