@@ -115,10 +115,6 @@ class SpotifyAPI {
         let userObject = await SpotifyAPI.getCurrentUserObject(access_token, playlistName);
         let userID = userObject.id;
 
-        console.log('user', JSON.stringify(userObject));
-        console.log('user id', userID);
-        console.log('playlist name', playlistName)
-
         /** send request */
         try{
             let body = {
@@ -135,8 +131,6 @@ class SpotifyAPI {
             })
             let json = await createPlaylist.json();
             let playlistID = json.id;
-            console.log('playlist id', playlistID);
-            console.log('json response', JSON.stringify(json));
             return SpotifyAPI.addItemsToPlaylist(access_token, playlistID, trackIDs);
         }
         catch(error){
