@@ -7,6 +7,17 @@
         align-items: center;
     }
 
+    .mainContent{
+        display: flex;
+        flex-direction: column;
+    }
+
+    #tracks{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
     #getTracks{
         margin-left: 40%;
         font-size: 12px;

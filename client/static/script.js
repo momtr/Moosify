@@ -2,6 +2,20 @@
 
 $(document).ready(function() {
 
+    let selectedIDs = [];
+
+    const selectTrack = (id) => selectedIDs.push(id);
+
+    const pushSongsToLibrary = async (ids) => {
+        let comma_seperated_ids = ids.join(',');
+        let access_token = Cookies.get('access_token');
+        let response = await fetch(`/api/v1/library/${access_token}?ids=${comma_seperated_ids}`, { 
+            method: 'POST'
+        });
+        let json = response.json();
+        console.log('/api/v1', json);
+    }
+
     $('#selectTracks').hide();
 
     $('#getTracks').click(async () => {
@@ -35,18 +49,5 @@ $(document).ready(function() {
         console.log(response);
 
     })
-
-    let selectedIDs = [];
-
-    const selectTrack = (id) => selectedIDs.push(id);
-
-    const pushSongsToLibrary = async (ids) => {
-        let access_token = Cookies.get('access_token');
-        let response = await fetch(`/api/v1/library/${access_token}?ids=${ids}`, { 
-            method: 'POST'
-        });
-        let json = response.json();
-        console.log('/api/v1', json);
-    }
 
 });
