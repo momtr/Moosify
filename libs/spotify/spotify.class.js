@@ -54,6 +54,28 @@ class SpotifyAPI {
         return track_ids;
     }
 
+    static getSongIDsFromAudioFeaturesArray(featuresArray) {
+        let ids = [];
+        for(let i of featuresArray)
+            ids.push(i.id);
+        return ids;
+    }
+
+    static getSeveralTracks(idArray) {
+        let comma_sepperated_ids = idArray.join(',');
+        try{
+            const tracks = await fetch(`https://api.spotify.com/v1/tracks?ids=${comma_sepperated_ids}`, {
+                method: 'GET',
+                headers: { Authorization: "Bearer " + access_token}
+            })
+            let json = await tracks.json();
+            return json.tracks;
+        }
+        catch(error){
+            console.log(error);
+        }
+    }
+
     static async getAudioFeaturesOfTracks(access_token, id_array){
         let comma_sepperated_ids = id_array.join(",");
         try{
