@@ -2,14 +2,12 @@
 /**  Mood Page      **/
     body{
         margin: 0;
+        background:/*  rgb(255, 135, 182, 0.5);*/ /*rgb(142, 182, 255, 0.5);*/
     }
 
-    hr{
-        margin-bottom: 3%;
-    }
-
-    .inputNgo{
-        column-gap: 100%;
+    #logo{
+        width: 25%;
+        margin-top: 2%;
     }
 
     .centered{
@@ -19,16 +17,32 @@
         margin-bottom: 0;
     }
 
+    .inputNgo{
+        column-gap: 100%;
+        margin-top: -2%;
+    }
+
+    #getTracks{
+        font-size: 14px;
+        font-weight: 600;
+        margin-left: -30%;
+    }
+
+    #inputString{
+        margin-bottom: 10%;
+    }
+
 
     #tracks {
         width: 100vh;
-        height: 100vw;
+        height: 89vw;
         overflow-y: auto;
         overflow-x: hidden;
-        background: #2E2E2E;
-        padding: 30px;
-        -webkit-transform-origin: right top;
-                transform-origin: right top;
+        background-color: rgb(142, 182, 255, 0.5);
+        margin-left: 5%;
+        padding: 1% 0 0 0;
+        -webkit-transform-origin: top right;
+                transform-origin: top right;
         -webkit-transform: rotate(-90deg) translate3d(0, -100vh, 0);
                 transform: rotate(-90deg) translate3d(0, -100vh, 0);
     }
@@ -40,23 +54,32 @@
     }
 
     .songItems {
-        width: 640px;
-        height: 640px;
-        background: #FDFFFC;
-        position: relative;
-    }
-    .songItems:not(:first-child) {
-        margin-top: 30px;
-    }
+    width: 300px;
+    height: 300px;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    background: #FDFFFC;
+    position: relative;
+}
+.songItems:first-child{
+    margin-top: 3%;
+}
+.songItems:last-child{
+    margin-bottom: 5%;
+}
+.songItems:hover{
+    -webkit-box-shadow: 2px 2px 15px 5px #000000; 
+    box-shadow: 2px 2px 15px 5px #000000;
+}
 
-    .item img {
-        position: absolute;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        background: no-repeat center center / cover;
-        opacity: .8;
-        background-blend-mode: luminosity;
-      }
+.item img {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: no-repeat center center / cover;
+    opacity: .8;
+    background-blend-mode: luminosity;
+  }
 /**/

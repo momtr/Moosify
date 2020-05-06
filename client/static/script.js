@@ -40,7 +40,7 @@ $(document).ready(function() {
 
         for(let i of tracks) {
             let imgURL = i.album.images[1].url;
-            $('#tracks').append(`<div class="songItems"><img src="${imgURL}" onClick="selectedIDs.push('${i.id}')"></div><h3>${i.name}</h3></div>`)   
+            $('#tracks').append(`<div class="songItems vivify fadeIn"><img src="${imgURL}" onClick="selectedIDs.push('${i.id}')"><h3>${i.name}</h3></div>`);
         }
 
         $('#getTracks').hide();
