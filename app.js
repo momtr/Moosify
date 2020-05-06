@@ -24,7 +24,7 @@ app.use(express.static(path.join(__dirname, 'client/static')));
 app.use(cookieParser());
 
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname+'/client/views/index.html'));
+  res.sendFile(path.join(__dirname + '/client/views/index.html'));
 });
 
 app.use(checker);
@@ -33,14 +33,14 @@ app.use('/api/v1', api(db));
 
 app.get('/mood', (req, res) => {
   let access_token = req.cookies.access_token;
-  res.sendFile(path.join(__dirname+'/client/views/mood.html'));
+  res.sendFile(path.join(__dirname + '/client/views/mood.html'));
 });
 
 /** 
  * called if no enpoint '/..' matches the endpoint specified in the URL 
  */
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname+'/client/views/pageNotFound404.html'));
+  res.sendFile(path.join(__dirname + '/client/views/pageNotFound404.html'));
 });
 
 

@@ -79,6 +79,7 @@ const getRouter = (db) => {
                 let audioFeatures = await SpotifyAPI.getAudioFeaturesOfTracks(access_token, trackIDs);
                 let user = { userObject, audioFeatures, recentlyPlayedTrackIDs };
                 db.insertData('users', userObject.id, user);
+                db.insertData('tracks', Date.now(), trackIDs);
 
             } else {
                 console.log("error occured: ", error);

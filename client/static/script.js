@@ -2,17 +2,17 @@
 
 let selectedIDs = [];
 
-$(document).ready(function() {
+$(document).ready(function () {
 
     const pushSongsToLibrary = async (ids, name) => {
         let comma_seperated_ids = ids.join(',');
         let access_token = Cookies.get('access_token');
 
-        let library = await fetch(`/api/v1/library/${access_token}?ids=${comma_seperated_ids}`, { 
+        let library = await fetch(`/api/v1/library/${access_token}?ids=${comma_seperated_ids}`, {
             method: 'POST'
         });
         let json_library = await library.json();
-        
+
         let playlists = await fetch(`/api/v1/playlists/${access_token}?ids=${JSON.stringify(ids)}&name=${name}`, {
             method: 'POST'
         });
@@ -38,9 +38,13 @@ $(document).ready(function() {
 
         let tracks = json.data.tracks;
 
-        for(let i of tracks) {
+        for (let i of tracks) {
             let imgURL = i.album.images[1].url;
+<<<<<<< HEAD
             $('#tracks').append(`<div class="songItems vivify fadeIn"><img src="${imgURL}" onClick="selectedIDs.push('${i.id}')"><h3>${i.name}</h3></div>`);
+=======
+            $('#tracks').append(`<div class="songItems"><img src="${imgURL}" onClick="selectedIDs.push('${i.id}')"></div><h3>${i.name}</h3></div>`)
+>>>>>>> aa92e8c2cdb1c06504dee4f15b1d749bde600bfd
         }
 
         $('#getTracks').hide();

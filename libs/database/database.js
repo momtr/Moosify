@@ -8,10 +8,10 @@
  */
 
 
- /**
-  * Class for performing operations on the Firebase DB
-  */
- class FirebaseRealTime {
+/**
+ * Class for performing operations on the Firebase DB
+ */
+class FirebaseRealTime {
 
     /**
      * Constructor function
@@ -26,7 +26,7 @@
             credential: admin.credential.cert(serviceAccount),
             databaseURL: 'https://moosify-832c9.firebaseio.com'
         });
-        
+
         /** create the database */
         const db = admin.database();
         this.ref = db.ref('restricted_access/secret_document');
@@ -60,11 +60,11 @@
      * @param {String} table the root node 
      */
     async downloadJSON(filename, table) {
-        if(!filename) filename = Date.now() + '.json';
+        if (!filename) filename = Date.now() + '.json';
         const fs = require('fs');
         let data = await this.getData(table);
         fs.writeFile(filename, JSON.stringify(data), err => {
-            if(err) console.log(err);
+            if (err) console.log(err);
             else console.log(`downloaded file ${filename}`);
         });
     }
