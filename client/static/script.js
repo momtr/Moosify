@@ -54,7 +54,13 @@ $(document).ready(function () {
         for (let i of tracks) {
             let imgURL = i.album.images[1].url;
             let artistString = formatArtists(i.artists);
-            $('#tracks').append(`<div class="songItems vivify fadeIn"><img src="${imgURL}" onClick="selectedIDs.push('${i.id}')"><h3>${i.name} |</h3><h3>${artistString}</h3></div>`);
+            $('#tracks').append(`<div class="songItems vivify fadeIn" id="${i.id}"><img src="${imgURL}" onClick="selectedIDs.push('${i.id}')"><h3>${i.name} |</h3><h3>${artistString}</h3></div>`);
+            $(`#${i.id}`).click(() => {
+                if($(`#${i.id}`).css('opacity') === '1')
+                    $(`#${i.id}`).css('opacity', '0.5');
+                else
+                    $(`#${i.id}`).css('opacity', '1');
+            })
         }
 
         $('#getTracks').hide();
