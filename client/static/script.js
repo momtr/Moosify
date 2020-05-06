@@ -25,11 +25,11 @@ $(document).ready(function () {
 
     $('#getTracks').click(async () => {
         function formatArtists(array){
-            let resultString;
+            if(array.length === 1)
+                return array[0].name;
+            
+            let resultString = "";
             for(let k = 0; k < array.length; k++){
-                if(array.length === 1){
-                    return array[k].name;
-                }
                 if(k === array.length-1)
                     resultString += array[k].name;
                 else
@@ -54,7 +54,7 @@ $(document).ready(function () {
         for (let i of tracks) {
             let imgURL = i.album.images[1].url;
             let artistString = formatArtists(i.artists);
-            $('#tracks').append(`<div class="songItems vivify fadeIn"><img src="${imgURL}" onClick="selectedIDs.push('${i.id}')"><h3>${i.name}</h3> | <h3>${artistString}</h3></div>`);
+            $('#tracks').append(`<div class="songItems vivify fadeIn"><img src="${imgURL}" onClick="selectedIDs.push('${i.id}')"><h3>${i.name} |</h3><h3>${artistString}</h3></div>`);
         }
 
         $('#getTracks').hide();
