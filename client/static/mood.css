@@ -17,14 +17,14 @@
     }
 
     #inputString{
-        flex-grow: 4;
+        flex-basis: 10000px;
     }
 
     #getTracks{
         display: inline-block;
         font-size: 12px;
         font-weight: 1000;
-        flex-grow: 1;
+        flex-basis: 100px;
     }
 
     #selectTracks{
