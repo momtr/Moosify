@@ -52,7 +52,17 @@ const getRouter = (db) => {
             message: 'your received all tracks in the track object',
             data: { tracks, normalizedMood, mood, moodString }
         }));
-    }); 
+    });
+    
+    router.get('/user/:accessToken', async (req, res, next) => {
+        let accessToken = req.params.accessToken || 0;
+        let userProfile = await SpotifyAPI.getCurrentUserObject(accessToken);
+        res.send(JSON.stringify({
+            status: 'success',
+            message: 'got user profile',
+            data: userProfile
+        }));
+    })
 
     return router;
 };
