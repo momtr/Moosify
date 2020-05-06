@@ -28,6 +28,12 @@
         margin-left: -30%;
     }
 
+    #selectTracks{
+        font-size: 14px;
+        font-weight: 600;
+        margin-left: -30%;
+    }
+
     #inputString{
         margin-bottom: 10%;
     }
