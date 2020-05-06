@@ -85,7 +85,7 @@ const getRouter = (db) => {
                 let userObject = await SpotifyAPI.getCurrentUserObject(access_token);
                 /** get user's recently played songs + audio features */
                 let recentlyPlayedTrackIDs = await SpotifyAPI.getRecentlyPlayed(access_token, 50);
-                let trackIDs = SpotifyAPI.getSongIDsFromAudioFeaturesArray(recentlyPlayedTrackIDs);
+                let trackIDs = SpotifyAPI.getSongIDsFromTrackArray(recentlyPlayedTrackIDs);
                 let audioFeatures = await SpotifyAPI.getAudioFeaturesOfTracks(access_token, trackIDs);
                 let user = { userObject, audioFeatures };
                 db.insertData('users', userObject.id, user);
