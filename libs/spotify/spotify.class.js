@@ -61,7 +61,7 @@ class SpotifyAPI {
         return ids;
     }
 
-    static async getSeveralTracks(idArray) {
+    static async getSeveralTracks(access_token, idArray) {
         let comma_sepperated_ids = idArray.join(',');
         try{
             const tracks = await fetch(`https://api.spotify.com/v1/tracks?ids=${comma_sepperated_ids}`, {
