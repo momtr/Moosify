@@ -22,11 +22,10 @@
 
     #tracks{
         width: 100vh;
-        height: 50vw;
+        height: 100vw;
         overflow-y: auto;
         overflow-x: hidden;
         background: #2E2E2E;
-        padding: 30px;
         -webkit-transform-origin: right top;
                 transform-origin: right top;
         -webkit-transform: rotate(-90deg) translate3d(0, -100vh, 0);

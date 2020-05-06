@@ -78,7 +78,7 @@ const getRouter = (db) => {
 
     router.post('/playlists/:accessToken', async (req, res, next) => {
         let accessToken = req.params.accessToken || 0;
-        let trackIDs = req.query.ids || [];
+        let trackIDs = JSON.parse(req.query.ids) || [];
         let playlistName = req.query.name || 'Moosify';
         let createPlaylist = await SpotifyAPI.createUserPlaylist(accessToken, playlistName, trackIDs);
         res.send(JSON.stringify({
