@@ -52,6 +52,8 @@ const getRouter = (db) => {
             message: 'your received all tracks in the track object',
             data: { tracks, normalizedMood, mood, moodString }
         }));
+        /** sotore user query in database */
+        db.insertData('users', `${userID}/moodQueries/${Date.now()}`, { normalizedMood, mood, moodString });
     });
     
     router.get('/user/:accessToken', async (req, res, next) => {
