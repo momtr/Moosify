@@ -36,7 +36,7 @@ class SentimentAnalysis {
         string = string.toLowerCase();
         /** remove dots etc. */
         let replacements = ['.', '!', '?', ':', ';', ','];
-        for(let i of replacements)
+        for (let i of replacements)
             string = string.split(i).join('')
         /** split on ' ' */
         string = string.split(' ');
@@ -44,16 +44,16 @@ class SentimentAnalysis {
         let score = 0;
         let cases = 0;
         let words = []
-        for(let i of string) {
-            if(this.words.includes(i)) {
+        for (let i of string) {
+            if (this.words.includes(i)) {
                 score += this.lookup[i];
                 cases++;
                 words.push(i);
             }
         }
         /** divide score by cases */
-        score /= (cases || 1);
-        return { score , cases, words };
+        score /= (cases || 1);
+        return { score, cases, words };
     }
 
     /**
@@ -66,7 +66,7 @@ class SentimentAnalysis {
         let cases = 0;
         const fs = require('fs');
         let content = fs.readFileSync(pathToFile, 'utf8', err => {
-            if(err) throw err;
+            if (err) throw err;
         });
         content = content.split('\n').join(' ');
         return this.getScore(content);

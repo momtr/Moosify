@@ -13,7 +13,7 @@ const cookieParser = require('cookie-parser');
 const SpotifyAPI = require('../libs/spotify/spotify.class');
 
 const SentimentAnalysis = require('../libs/sentimentAnalysis/sentimentAnalysis');
-const analyzer = new SentimentAnalysis(); 
+const analyzer = new SentimentAnalysis();
 
 const sortTracks = require('../libs/spotify/trackSorter');
 const normalizeMood = require('../libs/sentimentAnalysis/moodNormalizer');
@@ -32,7 +32,7 @@ const getRouter = (db) => {
         let userID = userObject.id;
         /** get the user's songs from the database */
         let usersTracks = await db.getData(`users/${userID}/audioFeatures`);
-        if(!usersTracks) {
+        if (!usersTracks) {
             res.send(JSON.stringify({
                 status: 'error',
                 message: 'something did not work, maybe the user\'s accessToken has already expired or the user ist not registered'
@@ -47,7 +47,7 @@ const getRouter = (db) => {
         let trackFeatures = sortTracks(usersTracks, normalizedMood, numberOfTracks);
         let idArray = SpotifyAPI.getSongIDsFromAudioFeaturesArray(trackFeatures);
         let tracks = await SpotifyAPI.getSeveralTracks(accessToken, idArray);
-        res.send(JSON.stringify({ 
+        res.send(JSON.stringify({
             status: 'success',
             message: 'your received all tracks in the track object',
             data: { tracks, normalizedMood, mood, moodString }
@@ -55,7 +55,7 @@ const getRouter = (db) => {
         /** sotore user query in database */
         db.insertData('users', `${userID}/moodQueries/${Date.now()}`, { normalizedMood, mood, moodString });
     });
-    
+
     router.get('/user/:accessToken', async (req, res, next) => {
         let accessToken = req.params.accessToken || 0;
         let userProfile = await SpotifyAPI.getCurrentUserObject(accessToken);
@@ -68,7 +68,7 @@ const getRouter = (db) => {
 
     router.post('/library/:accessToken', async (req, res, next) => {
         let accessToken = req.params.accessToken || 0;
-        let trackIDs = req.query.ids || [];
+        let trackIDs = req.query.ids || [];
         /** push songs to library */
         let apiResponse = await SpotifyAPI.pushToLibrary(accessToken, trackIDs);
         res.send(JSON.stringify({

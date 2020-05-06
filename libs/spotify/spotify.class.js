@@ -2,53 +2,53 @@ const fetch = require('node-fetch');
 const qs = require('qs');
 
 class SpotifyAPI {
-    
+
     static async getUserObjectViaUserID(user_id, access_token) {
-        try{
+        try {
             const user_object = await fetch(`https://api.spotify.com/v1/users/${user_id}`, {
-            method: 'GET',
-            headers: { Authorization: "Bearer " + access_token}
+                method: 'GET',
+                headers: { Authorization: "Bearer " + access_token }
             })
             return user_object.json();
         }
-        catch(error){
+        catch (error) {
             console.log(error);
         }
     }
 
     static async getCurrentUserObject(access_token) {
-        try{
+        try {
             const user_object = await fetch(`https://api.spotify.com/v1/me`, {
-            method: 'GET',
-            headers: { Authorization: "Bearer " + access_token}
+                method: 'GET',
+                headers: { Authorization: "Bearer " + access_token }
             })
             return user_object.json();
         }
-        catch(error){
+        catch (error) {
             console.log(error);
         }
     }
 
-    static async getRecentlyPlayed(access_token, numberOfSongs){
-        try{
+    static async getRecentlyPlayed(access_token, numberOfSongs) {
+        try {
             const recentlyPlayed = await fetch(`https://api.spotify.com/v1/me/player/recently-played?limit=${numberOfSongs}`, {
-            method: 'GET',
-            headers: { 
-                Authorization: "Bearer " + access_token,
-                Accept: "application/json"
-            }
+                method: 'GET',
+                headers: {
+                    Authorization: "Bearer " + access_token,
+                    Accept: "application/json"
+                }
             })
             let json = await recentlyPlayed.json();
             return json.items;
         }
-        catch(error){
+        catch (error) {
             console.log(error);
         }
     }
 
-    static getSongIDsFromTrackArray(track_array){
+    static getSongIDsFromTrackArray(track_array) {
         let track_ids = [];
-        for(let i = 0; i < track_array.length; i++){
+        for (let i = 0; i < track_array.length; i++) {
             track_ids[i] = track_array[i].track.id;
         }
         return track_ids;
@@ -56,47 +56,47 @@ class SpotifyAPI {
 
     static getSongIDsFromAudioFeaturesArray(featuresArray) {
         let ids = [];
-        for(let i of featuresArray)
+        for (let i of featuresArray)
             ids.push(i.id);
         return ids;
     }
 
     static async getSeveralTracks(access_token, idArray) {
         let comma_sepperated_ids = idArray.join(',');
-        try{
+        try {
             const tracks = await fetch(`https://api.spotify.com/v1/tracks?ids=${comma_sepperated_ids}`, {
                 method: 'GET',
-                headers: { Authorization: "Bearer " + access_token}
+                headers: { Authorization: "Bearer " + access_token }
             })
             let json = await tracks.json();
             return json.tracks;
         }
-        catch(error){
+        catch (error) {
             console.log(error);
         }
     }
 
-    static async getAudioFeaturesOfTracks(access_token, id_array){
+    static async getAudioFeaturesOfTracks(access_token, id_array) {
         let comma_sepperated_ids = id_array.join(",");
-        try{
+        try {
             const audio_features = await fetch(`https://api.spotify.com/v1/audio-features?ids=${comma_sepperated_ids}`, {
                 method: 'GET',
-                headers: { Authorization: "Bearer " + access_token}
+                headers: { Authorization: "Bearer " + access_token }
             })
             let json = await audio_features.json();
             return json.audio_features;
         }
-        catch(error){
+        catch (error) {
             console.log(error);
         }
     }
 
     static async pushToLibrary(access_token, comma_sepperated_ids) {
         comma_sepperated_ids = comma_sepperated_ids.split(',').join('%2C');
-        try{
+        try {
             const request = await fetch(`https://api.spotify.com/v1/me/tracks?ids=${comma_sepperated_ids}`, {
                 method: 'PUT',
-                headers: { 
+                headers: {
                     Authorization: "Bearer " + access_token,
                     Accept: 'application/json',
                     'Content-Type': 'application/json'
@@ -105,7 +105,7 @@ class SpotifyAPI {
             let json = await request.text();
             return json;
         }
-        catch(error){
+        catch (error) {
             console.log(error);
         }
     }
@@ -116,13 +116,13 @@ class SpotifyAPI {
         let userID = userObject.id;
 
         /** send request */
-        try{
+        try {
             let body = {
                 name: playlistName
             }
             const createPlaylist = await fetch(`https://api.spotify.com/v1/users/${userID}/playlists`, {
                 method: 'POST',
-                headers: { 
+                headers: {
                     Authorization: "Bearer " + access_token,
                     Accept: 'application/json',
                     'Content-Type': 'application/json'
@@ -133,24 +133,24 @@ class SpotifyAPI {
             let playlistID = json.id;
             return SpotifyAPI.addItemsToPlaylist(access_token, playlistID, trackIDs);
         }
-        catch(error){
+        catch (error) {
             console.log(error);
         }
     }
 
     static createTrackURIsFromIDs(trackIDs) {
         let uris = [];
-        for(let i of trackIDs)
+        for (let i of trackIDs)
             uris.push(`spotify:track:${i}`);
         return uris;
     }
 
     static async addItemsToPlaylist(access_token, playlistID, trackIDs) {
         let comma_seperated_uris = SpotifyAPI.createTrackURIsFromIDs(trackIDs).join(',');
-        try{
+        try {
             const request = await fetch(`https://api.spotify.com/v1/playlists/${playlistID}/tracks?uris=${comma_seperated_uris}`, {
                 method: 'POST',
-                headers: { 
+                headers: {
                     Authorization: "Bearer " + access_token,
                     Accept: 'application/json',
                     'Content-Type': 'application/json'
@@ -159,7 +159,7 @@ class SpotifyAPI {
             let json = await request.json();
             return json;
         }
-        catch(error){
+        catch (error) {
             console.log(error);
         }
     }

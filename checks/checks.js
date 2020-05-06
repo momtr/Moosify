@@ -8,7 +8,7 @@
 
 
 const check = (req, res, next) => {
-    if(req.cookies.access_token || req.url === "" || req.url.includes("/auth"))
+    if (req.cookies.access_token || req.url === "" || req.url.includes("/auth"))
         next(); // access granted
     else
         res.redirect('/'); // access denied
