@@ -10,8 +10,8 @@ $(document).ready(function() {
         let response = await fetch(`/api/v1/library/${access_token}?ids=${comma_seperated_ids}`, { 
             method: 'POST'
         });
-        let json = response.json();
-        console.log('/api/v1', json);
+        let json = await response.json();
+        return json;
     }
 
     $('#selectTracks').hide();
@@ -44,7 +44,7 @@ $(document).ready(function() {
     $('#selectTracks').click(async () => {
 
         let response = await pushSongsToLibrary(selectedIDs);
-        console.log(response);
+        console.log('response', response);
 
     })
 

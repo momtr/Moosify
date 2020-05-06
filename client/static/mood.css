@@ -14,10 +14,11 @@
 
     .inputNgo{
         display: flex;
+        flex-grow: 2;
     }
 
     #inputString{
-        flex-basis: 10000px;
+        flex-basis: 1000px;
     }
 
     #getTracks{
@@ -31,6 +32,9 @@
         display: inline-block;
         font-size: 12px;
         font-weight: 1000;
+    }
+    .track-container{
+        flex-grow: 1;
     }
 
     #tracks{

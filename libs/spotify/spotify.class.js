@@ -92,6 +92,7 @@ class SpotifyAPI {
     }
 
     static async pushToLibrary(access_token, comma_sepperated_ids) {
+        comma_sepperated_ids = comma_sepperated_ids.split(',').join('%2C');
         try{
             const audio_features = await fetch(`https://api.spotify.com/v1/me/tracks?ids=${comma_sepperated_ids}`, {
                 method: 'PUT',
