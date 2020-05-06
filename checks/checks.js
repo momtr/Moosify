@@ -11,7 +11,7 @@ const check = (req, res, next) => {
     console.log("Request URL: ", req.url);
     console.log("-----------------------------------------------------------------------------------------------------------------------")
     console.log("Next object: ", next);
-    if(req.cookies.access_token || req.url === "" || req.url === "/auth/redirect"){
+    if(req.cookies.access_token || req.url === "" || req.url.include("/auth/")){
          /*  access granted  */
             next();
     }
