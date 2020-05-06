@@ -2,7 +2,7 @@
 /**  Mood Page      **/
     body{
         margin: 0;
-        background:/*  rgb(255, 135, 182, 0.5);*/ /*rgb(142, 182, 255, 0.5);*/
+        background:/*  rgb(255, 135, 182, 0.5);*/ /*rgb(142, 182, 255, 0.5);*/0;
     }
 
     #logo{
@@ -60,26 +60,26 @@
     margin-bottom: 5%;
     background: #FDFFFC;
     position: relative;
-}
-.songItems:first-child{
-    margin-top: 3%;
-}
-.songItems:last-child{
-    margin-bottom: 5%;
-}
-.songItems:hover{
-    -webkit-box-shadow: 2px 2px 15px 5px #000000; 
-    box-shadow: 2px 2px 15px 5px #000000;
-}
+    }
+    .songItems:first-child{
+        margin-top: 3%;
+    }
+    .songItems:last-child{
+        margin-bottom: 5%;
+    }
+    .songItems:hover{
+        -webkit-box-shadow: 2px 2px 15px 5px #000000; 
+        box-shadow: 2px 2px 15px 5px #000000;
+    }
 
-.item img {
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background: no-repeat center center / cover;
-    opacity: .8;
-    background-blend-mode: luminosity;
-  }
+    .item img {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background: no-repeat center center / cover;
+        opacity: .8;
+        background-blend-mode: luminosity;
+    }
 /**/
