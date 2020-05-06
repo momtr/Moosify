@@ -121,13 +121,17 @@ class SpotifyAPI {
 
         /** send request */
         try{
-            const createPlaylist = await fetch(`https://api.spotify.com/v1/users/${userID}/playlists?name=${playlistName}`, {
+            let body = {
+                name: playlistName
+            }
+            const createPlaylist = await fetch(`https://api.spotify.com/v1/users/${userID}/playlists`, {
                 method: 'POST',
                 headers: { 
                     Authorization: "Bearer " + access_token,
                     Accept: 'application/json',
                     'Content-Type': 'application/json'
-                }
+                },
+                body: JSON.stringify(body)
             })
             let json = await createPlaylist.json();
             let playlistID = json.id;

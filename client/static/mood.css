@@ -22,7 +22,7 @@
 
     #tracks{
         width: 100vh;
-        height: 100vw;
+        height: 50vw;
         overflow-y: auto;
         overflow-x: hidden;
         background: #2E2E2E;
@@ -32,7 +32,7 @@
         -webkit-transform: rotate(-90deg) translate3d(0, -100vh, 0);
                 transform: rotate(-90deg) translate3d(0, -100vh, 0);
     }
-    .tracks > * {
+    #tracks > * {
         -webkit-transform-origin: left top;
                 transform-origin: left top;
         -webkit-transform: rotate(90deg) translate3d(0, calc(-100vh + 60px), 0);
