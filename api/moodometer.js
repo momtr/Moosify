@@ -40,7 +40,7 @@ const getRouter = (db) => {
             return;
         }
         /** do sentiment analysis with the query string */
-        let mood = analyzer.getScore(moodString);
+        let mood = analyzer.getScore(moodString).score;
         /** sort tracks according to mood */
         let normalizedMood = normalizeMood(mood);
         /** now the mood is between -5 and +5, however, we want it to be in range [0;1] */
