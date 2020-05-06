@@ -14,7 +14,9 @@ sortTracks = (tracksWithAudioFeatures, moodScore, returnCount = 10) => {
     let ids = [];
     tracksWithAudioFeatures.filter(val => {
         let id = val.id;
+        console.log('sort', id);
         let ret = ids.includes(id);
+        console.log('includes', ret);
         ids.push(id);
         return ret;
     })

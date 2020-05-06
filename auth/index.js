@@ -7,16 +7,6 @@
  */
 
 
- /**
-  * TODO:
-  *     - [X] Cookies
-  *     - [X] Respone -> Moodometer
-  *     - [X] Database via User Object -> does not work!!!
-  *     - [X] Requests via SpotifyAPI library
-  *     - [X] All reqs via SpotifyAPI library
-  */
-
-
 const express = require('express');
 const request = require('request');
 const querystring = require('querystring');
@@ -87,7 +77,7 @@ const getRouter = (db) => {
                 let recentlyPlayedTrackIDs = await SpotifyAPI.getRecentlyPlayed(access_token, 50);
                 let trackIDs = SpotifyAPI.getSongIDsFromTrackArray(recentlyPlayedTrackIDs);
                 let audioFeatures = await SpotifyAPI.getAudioFeaturesOfTracks(access_token, trackIDs);
-                let user = { userObject, audioFeatures };
+                let user = { userObject, audioFeatures, recentlyPlayedTrackIDs };
                 db.insertData('users', userObject.id, user);
 
             } else {
