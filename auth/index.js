@@ -21,7 +21,7 @@ const express = require('express');
 const request = require('request');
 const querystring = require('querystring');
 const cookieParser = require('cookie-parser');
-const scopes = "user-read-private user-read-email user-read-recently-played user-library-modify";
+const scopes = "user-read-private user-read-email user-read-recently-played user-library-modify playlist-modify-public playlist-modify-private";
 
 const SpotifyAPI = require('../libs/spotify/spotify.class');
 

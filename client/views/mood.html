@@ -31,21 +31,36 @@
 </head>
 <body>
 
-    <div class="mainContainer">
-        <head>
-            <h1>Moosify</h1>
-            <h6>Select songs you like! They will be added to your Spotify queue</h6>
+    <div>
+        <head class="main-container">
+            <div class="row">
+                <div class="12 col centered">
+                    <h1>Moosify</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="12 col centered">
+                    <h5>Select songs you like! They will be added to your Spotify queue</h5>
+                    <hr>
+                </div>
+            </div>
         </head>
-            
         <div class="mainContent">
-            <section class="inputNgo row">
-                <input id="inputString" class="card 6 col" type="text" placeholder="happy, cheerful, excited, ...">
-                <button class="btn primary vivify driveInLeft 2 col" id="getTracks">Get your Tracks!</button>
+            <div class="inputNgo row">
+                <div class="3 col"></div>
+                <div class="4 col">
+                    <input id="inputString" class="card w-100" type="text" placeholder="happy, cheerful, excited, ...">
+                </div>
+                <div class="1 col"></div>
+                <div class="2 col">
+                    <button class="btn primary vivify driveInLeft" id="getTracks">Get your Tracks!</button>
+                </div>
+                <div class="2 col"></div>
                 <button class="btn primary " id="selectTracks">Add to Library!</button>
-            </section>
-            <section class="track-container">
+            </div>
+            <div class="track-container">
                 <div id="tracks">Here are the tracks</div>
-            </section>
+            </div>
         </div>
 
         <footer>

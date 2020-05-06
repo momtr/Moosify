@@ -94,7 +94,7 @@ class SpotifyAPI {
     static async pushToLibrary(access_token, comma_sepperated_ids) {
         comma_sepperated_ids = comma_sepperated_ids.split(',').join('%2C');
         try{
-            const audio_features = await fetch(`https://api.spotify.com/v1/me/tracks?ids=${comma_sepperated_ids}`, {
+            const request = await fetch(`https://api.spotify.com/v1/me/tracks?ids=${comma_sepperated_ids}`, {
                 method: 'PUT',
                 headers: { 
                     Authorization: "Bearer " + access_token,
@@ -102,8 +102,57 @@ class SpotifyAPI {
                     'Content-Type': 'application/json'
                 }
             })
-            let json = await audio_features.json();
-            return json.audio_features;
+            let json = await request.json();
+            return json;
+        }
+        catch(error){
+            console.log(error);
+        }
+    }
+
+    static async createUserPlaylist(access_token, playlistName, trackIDs) {
+        /** get the user's id */
+        let userObject = await SpotifyAPI.getCurrentUserObject(access_token, playlistName);
+        let userID = userObject.id;
+        /** send request */
+        try{
+            const createPlaylist = await fetch(`https://api.spotify.com/v1/users/${userID}/playlists?name=${playlistName}`, {
+                method: 'POST',
+                headers: { 
+                    Authorization: "Bearer " + access_token,
+                    Accept: 'application/json',
+                    'Content-Type': 'application/json'
+                }
+            })
+            let json = await createPlaylist.json();
+            let playlistID = json.id;
+            return SpotifyAPI.addItemsToPlaylist(access_token, playlistID);
+        }
+        catch(error){
+            console.log(error);
+        }
+    }
+
+    static createTrackURIsFromIDs(trackIDs) {
+        let uris = [];
+        for(let i of trackIDs)
+            uris.push(`spotify:track:${i}`);
+        return uris;
+    }
+
+    static async addItemsToPlaylist(access_token, playlistID, trackIDs) {
+        let comma_seperated_uris = SpotifyAPI.createTrackURIsFromIDs(trackIDs).join(',');
+        try{
+            const request = await fetch(`https://api.spotify.com/v1/playlists/${playlistID}/tracks?uris=${comma_seperated_uris}`, {
+                method: 'POST',
+                headers: { 
+                    Authorization: "Bearer " + access_token,
+                    Accept: 'application/json',
+                    'Content-Type': 'application/json'
+                }
+            })
+            let json = await request.json();
+            return json;
         }
         catch(error){
             console.log(error);
