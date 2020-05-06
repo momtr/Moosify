@@ -39,7 +39,7 @@ $(document).ready(function() {
         let tracks = json.data.tracks;
 
         for(let i of tracks) {
-            let imgURL = i.album.images[0].url;
+            let imgURL = i.album.images[2].url;
             $('#tracks').append(`<div><img src="${imgURL}" onClick="selectedIDs.push('${i.id}')"><h3>${i.name}</h3></div>`)   
         }
 

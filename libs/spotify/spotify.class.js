@@ -102,7 +102,7 @@ class SpotifyAPI {
                     'Content-Type': 'application/json'
                 }
             })
-            let json = await request.json();
+            let json = await request.text();
             return json;
         }
         catch(error){
