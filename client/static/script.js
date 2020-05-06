@@ -27,12 +27,13 @@ $(document).ready(function () {
         function formatArtists(array){
             let resultString;
             for(let k = 0; k < array.length; k++){
-                if(array.length === 1)
-                    resultString = k.name;
-                else if(k === array.length-1)
-                    resultString += k.name;
+                if(array.length === 1){
+                    return array[k].name;
+                }
+                if(k === array.length-1)
+                    resultString += array[k].name;
                 else
-                    resultString += k.name + ", ";
+                    resultString += array[k].name + ", ";
             }
             return resultString;
         }
