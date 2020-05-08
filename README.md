@@ -19,7 +19,7 @@ Cien, Alex, Moritz
 - `Code`: GitHub
 
 ## Technology
-- React.js (frontend)
+- HTML5, CSS3, Vivify- and Lit CSS Library (frontend)
 - Node.js using express (backend)
 - NoSQL database
 - Spotify API (interface)
@@ -39,10 +39,12 @@ cute design like the glitch page 🎉🎉
 
 ## Flow
 - User signs in with Spotify 
-- he is redirected to our app and we receive a token (`user_uri`)
-- he states his mood 
-- those Params are sent to our backend to `/getSongs`
-- we request his songs and their mood from the Spotify web API
-- we choose the best songs that correspond to the user's current mood 
-- we send them to the user
-- he can play them in the web app using the Spotify player widget 
+- He is redirected to our app and we receive an access token
+- He states his mood 
+- These parameters are sent to our backend to `/getSongs
+- We request his recently played songs and their mood from the Spotify web API
+- We choose the best songs that correspond to the user's current mood 
+- We send them to the user
+- He can select which song he wants to add to his library
+- The user can now go into Spotify and listen to the new playlist we have created for him, containing the selected songs
+- Enjoy the Music! 😀
