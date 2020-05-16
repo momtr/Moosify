@@ -1,3 +1,5 @@
+<img src="https://github.com/moritzmitterdorfer/Moosify/blob/master/reports/logo.png">
+
 # Moosify
 
 Welcome to our web app ;) <br />
