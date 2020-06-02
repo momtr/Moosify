@@ -16,6 +16,7 @@
     "mysql": "^2.18.1",
     "node-fetch": "^2.6.0",
     "querystring": "^0.2.0",
+    "recon-engine-client": "^1.0.4",
     "request": "^2.88.2"
   }
 }

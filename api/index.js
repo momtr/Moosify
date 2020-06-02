@@ -18,6 +18,11 @@ const analyzer = new SentimentAnalysis();
 const sortTracks = require('../libs/spotify/trackSorter');
 const normalizeMood = require('../libs/sentimentAnalysis/moodNormalizer');
 
+/** recon */
+const ReconClient = require('recon-engine-client');
+const RECON_API_KEY = '1fd04e32-4219-41ce-b4d3-856f75cf7f7a';
+const recon = new ReconClient({ token: RECON_API_KEY });
+
 const getRouter = (db) => {
     const router = express.Router();
     router.use(cookieParser());
@@ -43,10 +48,24 @@ const getRouter = (db) => {
         let mood = analyzer.getScore(moodString).score;
         /** sort tracks according to mood */
         let normalizedMood = normalizeMood(mood);
+        /** user actions for that user (only 10 songs) */
+        let ids = [];
+        for(let i of usersTracks) {
+            ids.push(i);
+        }
+        recon.userMultipleActions(userID, ids);
         /** now the mood is between -5 and +5, however, we want it to be in range [0;1] */
         let trackFeatures = sortTracks(usersTracks, normalizedMood, numberOfTracks);
         // let idArray = SpotifyAPI.getSongIDsFromAudioFeaturesArray(trackFeatures);
-        let tracks = await SpotifyAPI.getSeveralTracks(accessToken, idArray);
+        //      idsArray
+        /** get recommendations for user */      
+        let recommendedTracksIds = [];
+        let recommendedTracks = await recon.recommend(userID);
+        for(let i of recommendedTracks) {
+            recommendedTracksIds.push(i.id);
+        }        
+        trackFeatures = trackFeatures.concat(recommendedTracksIds);
+        let tracks = await SpotifyAPI.getSeveralTracks(accessToken, trackFeatures);
         res.json({
             status: 'success',
             message: 'your received all tracks in the track object',
