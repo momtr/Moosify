@@ -35,6 +35,6 @@ input{
     margin-left: auto;
     margin-right: auto;
 }
-.card{
+div.card{
     width: 50%;
 }
