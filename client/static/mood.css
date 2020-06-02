@@ -11,6 +11,13 @@ body{
     margin-right: auto;
     display: block;
 }
+
+@media (max-width: 700px) {
+    #logo{
+        width: 50%;
+    }
+}
+
 .row h5{
     text-align: center;
 }
