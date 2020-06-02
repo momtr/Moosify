@@ -23,7 +23,6 @@ body{
     font-size: 100%;
     font-weight: 600;
 }
-.container{
-    max-width: 1035px;
-    margin: auto;
+input{
+    box-sizing: border-box;
 }
