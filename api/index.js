@@ -20,7 +20,7 @@ const normalizeMood = require('../libs/sentimentAnalysis/moodNormalizer');
 
 /** recon */
 const ReconClient = require('recon-engine-client');
-const RECON_API_KEY = '1fd04e32-4219-41ce-b4d3-856f75cf7f7a';
+const RECON_API_KEY = '7b6d93be-0ddb-4ca6-af2a-0dd8d2ee3f65';
 const recon = new ReconClient({ token: RECON_API_KEY });
 
 const getRouter = (db) => {
