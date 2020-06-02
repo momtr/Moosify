@@ -5,17 +5,11 @@ body{
     background:/*  rgb(255, 135, 182, 0.5);*/ /*rgb(142, 182, 255, 0.5);*/0;
 }
 #logo{
-    width: 25%;
+    width: 50%;
     margin-top: 2%;
     margin-left: auto;
     margin-right: auto;
     display: block;
-}
-
-@media (max-width: 700px) {
-    #logo{
-        width: 50%;
-    }
 }
 
 .row h5{
@@ -32,4 +26,8 @@ body{
 }
 input{
     box-sizing: border-box;
+}
+.cover{
+    width: 300px;
+    height: 300px;
 }
