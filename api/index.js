@@ -55,7 +55,7 @@ const getRouter = (db) => {
         /** user actions for that user (only 10 songs) */
         let ids = [];
         for(let i of trackFeatures) {
-            ids.push(i);
+            ids.push(i.id);
         }
         recon.userMultipleActions(userID, ids);
         /** get recommendations for user */      
