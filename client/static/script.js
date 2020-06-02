@@ -55,11 +55,11 @@ $(document).ready(function () {
             $('#track-container').append(
             `<div class="row" id="${i}">
                 <div class="card col">
-                    <img class="w-100" src="${tracks[i].album.images[1].url}" onClick="selectedIDs.push('${tracks[i].id}')">
+                    <img class="w-100 cover" src="${tracks[i].album.images[1].url}" onClick="selectedIDs.push('${tracks[i].id}')">
                     <h4>${tracks[i].name} by </h4><h4>${formatArtists(tracks[i].artists)}</h4>
                 </div>
                 <div class="card col">
-                    <img class="w-100" src="${tracks[i+1].album.images[1].url}" onClick="selectedIDs.push('${tracks[i+1].id}')">
+                    <img class="w-100 cover" src="${tracks[i+1].album.images[1].url}" onClick="selectedIDs.push('${tracks[i+1].id}')">
                     <h4>${tracks[i+1].name} by </h4><h4>${formatArtists(tracks[i+1].artists)}</h4>
                 </div>
             </div>`);
