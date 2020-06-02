@@ -20,7 +20,7 @@ class FirebaseRealTime {
         /** use NPM module */
         const admin = require('firebase-admin');
         /** retrieve credentails from json file */
-        const serviceAccount = require('./credentials/moosify.json');
+        const serviceAccount = require('./credentials/moosify-832c9-firebase-adminsdk-ubpts-eb440c8bac.json');
         /** initialize the app */
         admin.initializeApp({
             credential: admin.credential.cert(serviceAccount),

@@ -17,8 +17,8 @@ const checker = require('./checks/checks');
 const app = express();
 
 /** middleware */
-const auth = require('./auth/index');
-const api = require('./api/moodometer');
+const auth = require('./auth');
+const api = require('./api');
 
 app.use(express.static(path.join(__dirname, 'client/static')));
 app.use(cookieParser());

@@ -16,8 +16,18 @@ sortTracks = (tracksWithAudioFeatures, moodScore, returnCount = 10) => {
         if (aMoodDifference < bMoodDifference) return -1;
         else return 1;
     });
-    if (tracksWithAudioFeatures.length > returnCount) return tracksWithAudioFeatures.slice(0, returnCount);
-    else return tracksWithAudioFeatures;
+
+    let ids = tracksWithAudioFeatures.map(item => item.id);
+    ids = ids.filter((val, index) => {
+        for(let i = 0; i < ids.length; i++) {
+            if(i != index && ids[i] == val)
+                return false;
+        }
+        return true;
+    })
+
+    if (ids.length > returnCount) return ids.slice(0, returnCount);
+    else return ids;
 }
 
 module.exports = sortTracks;
