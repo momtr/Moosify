@@ -51,7 +51,7 @@ $(document).ready(function () {
 
         let tracks = json.data.tracks;
 
-        for (let i = 0; i < tracks.length; i+=3) {
+        for (let i = 0; i < tracks.length; i+=2) {
             $('#track-container').append(
             `<div class="row" id="${i}">
                 <div class="card col">
@@ -61,10 +61,6 @@ $(document).ready(function () {
                 <div class="card col">
                     <img src="${tracks[i+1].album.images[1].url}" onClick="selectedIDs.push('${tracks[i+1].id}')">
                     <h3>${tracks[i+1].name} by </h3><h3>${formatArtists(tracks[i+1].artists)}</h3>
-                </div>
-                <div class="card col">
-                    <img src="${tracks[i+2].album.images[1].url}" onClick="selectedIDs.push('${tracks[i+2].id}')">
-                    <h3>${tracks[i+2].name} by </h3><h3>${formatArtists(tracks[i+2].artists)}</h3>
                 </div>
             </div>`);
             $(`#${tracks[i].id}`).click(() => {
@@ -78,12 +74,6 @@ $(document).ready(function () {
                     $(`#${tracks[i+1].id}`).css('opacity', '0.5');
                 else
                     $(`#${tracks[i+1].id}`).css('opacity', '1');
-            })
-            $(`#${tracks[i+2].id}`).click(() => {
-                if($(`#${tracks[i+2].id}`).css('opacity') === '1')
-                    $(`#${tracks[i+2].id}`).css('opacity', '0.5');
-                else
-                    $(`#${tracks[i+2].id}`).css('opacity', '1');
             })
         }
 
