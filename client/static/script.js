@@ -56,11 +56,11 @@ $(document).ready(function () {
             `<div class="row" id="${i}">
                 <div class="card 6 col">
                     <img class="w-100 cover" src="${tracks[i].album.images[1].url}" onClick="selectedIDs.push('${tracks[i].id}')">
-                    <h4>${tracks[i].name} by </h4><h4>${formatArtists(tracks[i].artists)}</h4>
+                    <h6>${tracks[i].name} by </h6><h6>${formatArtists(tracks[i].artists)}</h6>
                 </div>
                 <div class="card 6 col">
                     <img class="w-100 cover" src="${tracks[i+1].album.images[1].url}" onClick="selectedIDs.push('${tracks[i+1].id}')">
-                    <h4>${tracks[i+1].name} by </h4><h4>${formatArtists(tracks[i+1].artists)}</h4>
+                    <h6>${tracks[i+1].name} by </h6><h6>${formatArtists(tracks[i+1].artists)}</h6>
                 </div>
             </div>`);
             $(`#${tracks[i].id}`).click(() => {
