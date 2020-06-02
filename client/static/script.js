@@ -56,7 +56,7 @@ $(document).ready(function () {
             `<div class="row" id="${i}">
                 <div class="card col">
                     <img src="${tracks[i].album.images[1].url}" onClick="selectedIDs.push('${tracks[i].id}')">
-                    <h3>${tracks[i].name} |</h3><h3>${formatArtists(tracks[i].artists)}</h3>
+                    <h3>${tracks[i].name} by </h3><h3>${formatArtists(tracks[i].artists)}</h3>
                 </div>
                 <div class="card col">
                     <img src="${tracks[i+1].album.images[1].url}" onClick="selectedIDs.push('${tracks[i+1].id}')">
@@ -64,7 +64,7 @@ $(document).ready(function () {
                 </div>
                 <div class="card col">
                     <img src="${tracks[i+2].album.images[1].url}" onClick="selectedIDs.push('${tracks[i+2].id}')">
-                    <h3>${tracks[i+2].name} |</h3><h3>${formatArtists(tracks[i+2].artists)}</h3>
+                    <h3>${tracks[i+2].name} by </h3><h3>${formatArtists(tracks[i+2].artists)}</h3>
                 </div>
             </div>`);
             $(`#${tracks[i].id}`).click(() => {

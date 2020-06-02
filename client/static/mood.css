@@ -24,6 +24,7 @@ body{
     font-weight: 600;
 }
 .container{
-    height: 100vh;
-    width: 60%;
+    max-width: 80em;
+    padding: 1em;
+    margin: auto;
 }
