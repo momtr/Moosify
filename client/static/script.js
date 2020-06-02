@@ -38,7 +38,7 @@ $(document).ready(function () {
             return resultString;
         }
 
-        $('#tracks').html('');
+        $('#track-container').html('');
 
         let inputString = $('#inputString').val();
 
@@ -55,15 +55,15 @@ $(document).ready(function () {
             $('#track-container').append(
             `<div class="row" id="${i}">
                 <div class="card col">
-                    <img src="${tracks[i].album.images[1].url}" onClick="selectedIDs.push('${track[i].id}')">
+                    <img src="${tracks[i].album.images[1].url}" onClick="selectedIDs.push('${tracks[i].id}')">
                     <h3>${tracks[i].name} |</h3><h3>${formatArtists(tracks[i].artists)}</h3>
                 </div>
                 <div class="card col">
-                    <img src="${tracks[i+1].album.images[1].url}" onClick="selectedIDs.push('${track[i+1].id}')">
+                    <img src="${tracks[i+1].album.images[1].url}" onClick="selectedIDs.push('${tracks[i+1].id}')">
                     <h3>${tracks[i+1].name} by </h3><h3>${formatArtists(tracks[i+1].artists)}</h3>
                 </div>
                 <div class="card col">
-                    <img src="${tracks[i+2].album.images[1].url}" onClick="selectedIDs.push('${track[i+2].id}')">
+                    <img src="${tracks[i+2].album.images[1].url}" onClick="selectedIDs.push('${tracks[i+2].id}')">
                     <h3>${tracks[i+2].name} |</h3><h3>${formatArtists(tracks[i+2].artists)}</h3>
                 </div>
             </div>`);
