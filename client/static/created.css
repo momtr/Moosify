@@ -1,0 +1,33 @@
+body {
+    background-color: rgba(138, 171, 255, 0.6);
+}
+
+* {
+    font-weight: bold !important;
+}
+
+h2 {
+    font-size: 140%;
+}
+
+.wrapper {
+    width: 100%;
+}
+
+.centered {
+    text-align: center;
+}
+
+#logo {
+    width: 50%;
+    margin-top: 5%;
+    margin-left: 25%;
+}
+
+@media (max-width: 800px) {
+    #logo {
+        width: 80%;
+        margin-top: 5%;
+        margin-left: 10%;
+    }
+}
