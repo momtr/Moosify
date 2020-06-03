@@ -58,7 +58,7 @@ button {
 @media (min-width: 900px) {
     .song {
         width: 70%;
-        margin: 5% 15%;
+        margin: 5% 15% 5% 15%;
     }
 }
 
@@ -81,6 +81,5 @@ footer h5 {
 }
 
 .selected {
-    transition: box-shadow .3s !important;
-    box-shadow: -5px 5px 11px rgba(15, 235, 26, 0.2) !important; 
+    background-color: rgb(80, 210, 110);
 }
