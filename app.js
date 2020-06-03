@@ -36,6 +36,11 @@ app.get('/mood', (req, res) => {
   res.sendFile(path.join(__dirname + '/client/views/mood.html'));
 });
 
+/** playlist created */
+app.get('/created', (req, res) => {
+  res.sendFile(path.join(__dirname + '/client/views/created.html'));
+});
+
 /** 
  * called if no enpoint '/..' matches the endpoint specified in the URL 
  */

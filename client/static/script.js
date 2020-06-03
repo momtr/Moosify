@@ -55,12 +55,12 @@ $(document).ready(function () {
         for (let i = 0; i < tracks.length; i+=2) {
             $('#track-container').append(
             `<div class="song" id="${i}">
-                <div class="card 6 col">
-                    <img class="w-100" id="${tracks[i].id}" src="${tracks[i].album.images[1].url}">
+                <div class="card 6 col" id="${tracks[i].id}">
+                    <img class="w-100" src="${tracks[i].album.images[1].url}">
                     <h5>${tracks[i].name} by </h5><h5>${formatArtists(tracks[i].artists)}</h5>
                 </div>
-                <div class="card 6 col">
-                    <img class="w-100" id="${tracks[i+1].id}" src="${tracks[i+1].album.images[1].url}">
+                <div class="card 6 col" id="${tracks[i+1].id}">
+                    <img class="w-100" src="${tracks[i+1].album.images[1].url}">
                     <h5>${tracks[i+1].name} by </h5><h5>${formatArtists(tracks[i+1].artists)}</h5>
                 </div>
             </div>`);
@@ -100,6 +100,7 @@ $(document).ready(function () {
         console.log('response', response);
         
         /** redirect to created page */
+        window.location.href = `/created`;
 
     })
 });
