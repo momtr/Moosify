@@ -11,7 +11,9 @@ body{
     margin-right: auto;
     display: block;
 }
-
+h5{
+    text-align: center;
+}
 #getTracks{
     font-size: 100%;
     font-weight: 600;
@@ -24,18 +26,13 @@ body{
 input{
     box-sizing: border-box;
 }
-.cover{
-    width: 300px;
-    height: 300px;
-}
 
 .track-container {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    align-content: center;
+    margin-top: 3%;
 }
 
 .song {
-    flex: 1 1 0px;
+    width: 80%;
+    max-width: 500px;
+    margin: 10%;
 }
