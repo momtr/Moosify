@@ -71,3 +71,11 @@ button {
 footer h5 {
     font-size: 90% !important;
 }
+
+.card {
+    transition: box-shadow .3s !important;
+}
+
+.card:hover {
+    box-shadow: -5px 5px 11px rgba(33,33,33,.2) !important; 
+}
