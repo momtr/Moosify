@@ -26,13 +26,22 @@ h5{
 input{
     box-sizing: border-box;
 }
-
+.button-container{
+    display: flex;
+    justify-content: center;
+}
 .track-container {
     margin-top: 3%;
 }
 
 .song {
     width: 80%;
-    max-width: 500px;
-    margin: 10%;
+    margin: 5% 10%;
+}
+
+@media (min-width: 900px) {
+    .song {
+        width: 50%;
+        margin: 5% 25%;
+    }
 }
