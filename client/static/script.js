@@ -22,7 +22,7 @@ $(document).ready(function () {
     }
 
     $('#selectTracks').hide();
-    $('footer').hide();
+    $('#footer').hide();
 
     $('#getTracks').click(async () => {
         function formatArtists(array){
@@ -80,7 +80,7 @@ $(document).ready(function () {
 
         $('#getTracks').hide();
         $('#selectTracks').show();
-        $('footer').show();
+        $('#footer').show();
     });
 
     $('#selectTracks').click(async () => {
