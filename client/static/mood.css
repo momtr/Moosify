@@ -37,7 +37,6 @@ input{
 }
 div.card{
     width: 50%;
-    display: flex;
 }
 h6{
     flex: 1;
