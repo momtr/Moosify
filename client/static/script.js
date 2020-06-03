@@ -53,7 +53,7 @@ $(document).ready(function () {
 
         for (let i = 0; i < tracks.length; i+=2) {
             $('#track-container').append(
-            `<div class="row" id="${i}">
+            `<div class="song" id="${i}">
                 <div class="card 6 col">
                     <img class="w-100 cover" src="${tracks[i].album.images[1].url}" onClick="selectedIDs.push('${tracks[i].id}')">
                     <h6>${tracks[i].name} by </h6><h6>${formatArtists(tracks[i].artists)}</h6>
