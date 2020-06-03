@@ -36,7 +36,8 @@ input{
 }
 
 button {
-    font-size: 80%;
+    font-size: 60%;
+    margin-top: 5%;
 }
 
 .song {
