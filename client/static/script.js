@@ -67,10 +67,13 @@ $(document).ready(function () {
             $(`#${tracks[i].id}`).click(() => {
                 let id = tracks[i].id;
                 let index = selectedIDs.indexOf(id);
-                if(index === -1)
+                if(index === -1) {
                     selectedIDs.push(id);
-                else
+                    $(`#${id}`).addClass('selected');
+                } else {
                     selectedIDs.splice(index, 1);
+                    $(`#${id}`).removeClass('selected');
+                }
             })
             $(`#${tracks[i+1].id}`).click(() => {
                 let id = tracks[i+1].id;

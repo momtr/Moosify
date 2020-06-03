@@ -82,5 +82,5 @@ footer h5 {
 
 .selected {
     transition: box-shadow .3s !important;
-    box-shadow: -5px 5px 11px rgba(33,33,33,.2) !important; 
+    box-shadow: -5px 5px 11px rgba(15, 235, 26, 0.2) !important; 
 }
