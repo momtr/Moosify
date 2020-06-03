@@ -67,3 +67,7 @@ button {
     padding: 5% !important;
     background-color: rgb(138, 171m 255) !important;
 }
+
+footer h5 {
+    font-size: 90% !important;
+}
