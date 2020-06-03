@@ -5,7 +5,7 @@ body{
     background:/*  rgb(255, 135, 182, 0.5);*/ /*rgb(142, 182, 255, 0.5);*/0;
 }
 #logo{
-    width: 50%;
+    width: 75%;
     margin-top: 2%;
     margin-left: auto;
     margin-right: auto;
@@ -41,7 +41,7 @@ input{
 
 @media (min-width: 900px) {
     .song {
-        width: 50%;
-        margin: 5% 25%;
+        width: 70%;
+        margin: 5% 15%;
     }
 }
