@@ -79,3 +79,8 @@ footer h5 {
 .card:hover {
     box-shadow: -5px 5px 11px rgba(33,33,33,.2) !important; 
 }
+
+.selected {
+    transition: box-shadow .3s !important;
+    box-shadow: -5px 5px 11px rgba(33,33,33,.2) !important; 
+}

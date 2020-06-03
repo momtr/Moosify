@@ -56,25 +56,29 @@ $(document).ready(function () {
             $('#track-container').append(
             `<div class="song" id="${i}">
                 <div class="card 6 col">
-                    <img class="w-100" id="${tracks[i].id}"src="${tracks[i].album.images[1].url}" onClick="selectedIDs.push('${tracks[i].id}')">
+                    <img class="w-100" id="${tracks[i].id}" src="${tracks[i].album.images[1].url}">
                     <h5>${tracks[i].name} by </h5><h5>${formatArtists(tracks[i].artists)}</h5>
                 </div>
                 <div class="card 6 col">
-                    <img class="w-100" src="${tracks[i+1].album.images[1].url}" onClick="selectedIDs.push('${tracks[i+1].id}')">
+                    <img class="w-100" id="${tracks[i+1].id}" src="${tracks[i+1].album.images[1].url}">
                     <h5>${tracks[i+1].name} by </h5><h5>${formatArtists(tracks[i+1].artists)}</h5>
                 </div>
             </div>`);
             $(`#${tracks[i].id}`).click(() => {
-                if($(`#${tracks[i].id}`).css('opacity') === '1')
-                    $(`#${tracks[i].id}`).css('opacity', '0.5');
+                let id = tracks[i].id;
+                let index = selectedIDs.indexOf(id);
+                if(index === -1)
+                    selectedIDs.push(id);
                 else
-                    $(`#${tracks[i].id}`).css('opacity', '1');
+                    selectedIDs.splice(index, 1);
             })
             $(`#${tracks[i+1].id}`).click(() => {
-                if($(`#${tracks[i+1].id}`).css('opacity') === '1')
-                    $(`#${tracks[i+1].id}`).css('opacity', '0.5');
+                let id = tracks[i+1].id;
+                let index = selectedIDs.indexOf(id);
+                if(index === -1)
+                    selectedIDs.push(id);
                 else
-                    $(`#${tracks[i+1].id}`).css('opacity', '1');
+                    selectedIDs.splice(index, 1);
             })
         }
 
@@ -85,9 +89,11 @@ $(document).ready(function () {
 
     $('#selectTracks').click(async () => {
 
-        let inputString = $('#inputString').val();
+        let inputString = ($('#inputString').val() + ' :)') || 'Moosify :)';
         let response = await pushSongsToLibrary(selectedIDs, inputString);
         console.log('response', response);
+        
+        /** redirect to created page */
 
     })
 });
