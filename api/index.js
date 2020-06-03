@@ -53,11 +53,7 @@ const getRouter = (db) => {
         // let idArray = SpotifyAPI.getSongIDsFromAudioFeaturesArray(trackFeatures);
         //      idsArray
         /** user actions for that user (only 10 songs) */
-        let ids = [];
-        for(let i of trackFeatures) {
-            ids.push(i);
-        }
-        recon.userMultipleActions(userID, ids);
+        recon.userMultipleActions(userID, trackFeatures);
         /** get recommendations for user */      
         let recommendedTracksIds = [];
         let recommendedTracks = await recon.recommend(userID);
