@@ -46,3 +46,7 @@ html, body{
     text-align: center;
     width: 75%;
 }
+
+h6 {
+    font-weight: bold;
+}
