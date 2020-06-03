@@ -43,10 +43,11 @@ input{
 }
 
 button {
-    font-size: 60% !important;
-    margin-top: 5% !important;
+    font-size: 80% !important;
+    margin-top: 3% !important;
     border-radius: 4px !important;
     background-color: rgb(255, 135, 182) !important;
+    border: 0 !important;
 }
 
 .song {
