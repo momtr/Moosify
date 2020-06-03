@@ -5,7 +5,7 @@ body{
     background:/*  rgb(255, 135, 182, 0.5);*/ /*rgb(142, 182, 255, 0.5);*/0;
 }
 #logo{
-    width: 75%;
+    width: 65%;
     margin-top: 2%;
     margin-left: auto;
     margin-right: auto;
@@ -13,6 +13,7 @@ body{
 }
 h5{
     text-align: center;
+    font-weight: bold;
 }
 #getTracks{
     font-size: 100%;
@@ -32,6 +33,10 @@ input{
 }
 .track-container {
     margin-top: 3%;
+}
+
+button {
+    font-size: 80%;
 }
 
 .song {
