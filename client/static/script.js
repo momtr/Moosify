@@ -41,6 +41,7 @@ $(document).ready(function () {
 
         let inputString = $('#inputString').val();
         $('#call-to-action').html('Select songs you like. They will be added to a newly created playlist.');
+        $('#inputString').hide();
 
         // get tracks from API
         let accessToken = Cookies.get('access_token');
