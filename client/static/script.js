@@ -1,5 +1,3 @@
-// this is just an example!! 
-
 let selectedIDs = [];
 
 $(document).ready(function () {
@@ -42,6 +40,7 @@ $(document).ready(function () {
         $('#track-container').html('');
 
         let inputString = $('#inputString').val();
+        $('#call-to-action').html('Select songs you like. They will be added to a newly created playlist.');
 
         // get tracks from API
         let accessToken = Cookies.get('access_token');
