@@ -55,10 +55,7 @@ class SpotifyAPI {
     }
 
     static getSongIDsFromAudioFeaturesArray(featuresArray) {
-        let ids = [];
-        for (let i of featuresArray)
-            ids.push(i.id);
-        return ids;
+        return featuresArray.map(i => i.id);
     }
 
     static async getSeveralTracks(access_token, idArray) {
