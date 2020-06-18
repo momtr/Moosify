@@ -47,11 +47,7 @@ class SpotifyAPI {
     }
 
     static getSongIDsFromTrackArray(track_array) {
-        let track_ids = [];
-        for (let i = 0; i < track_array.length; i++) {
-            track_ids[i] = track_array[i].track.id;
-        }
-        return track_ids;
+        return track_array.map(i => i.track.id);
     }
 
     static getSongIDsFromAudioFeaturesArray(featuresArray) {
@@ -136,10 +132,7 @@ class SpotifyAPI {
     }
 
     static createTrackURIsFromIDs(trackIDs) {
-        let uris = [];
-        for (let i of trackIDs)
-            uris.push(`spotify:track:${i}`);
-        return uris;
+        return trackIDs.map(i => `spotify:track:${i}`);
     }
 
     static async addItemsToPlaylist(access_token, playlistID, trackIDs) {
