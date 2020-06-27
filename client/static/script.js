@@ -27,14 +27,7 @@ $(document).ready(function () {
             if(array.length === 1)
                 return array[0].name;
             
-            let resultString = "";
-            for(let k = 0; k < array.length; k++){
-                if(k === array.length-1)
-                    resultString += array[k].name;
-                else
-                    resultString += array[k].name + ", ";
-            }
-            return resultString;
+            return array.map(i => i.name).join(', ');
         }
 
         $('#track-container').html('');

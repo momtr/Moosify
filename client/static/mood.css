@@ -74,6 +74,7 @@ footer h5 {
 
 .card {
     transition: box-shadow .3s !important;
+    transition: background-color .3s;
 }
 
 .card:hover {
