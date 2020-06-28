@@ -31,7 +31,6 @@ app.use('/auth', auth(db));
 app.use('/api/v1', api(db));
 
 app.get('/mood', (req, res) => {
-  let access_token = req.cookies.access_token;
   res.sendFile(path.join(__dirname + '/client/views/mood.html'));
 });
 
