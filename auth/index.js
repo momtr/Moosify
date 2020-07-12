@@ -83,10 +83,10 @@ const getRouter = (db) => {
 
             } else {
                 console.log("error occured: ", error);
-                res.send(JSON.stringify({
+                res.json({
                     status: 'error',
                     message: 'Could not get access_token from API'
-                }));
+                });
             }
         });
         

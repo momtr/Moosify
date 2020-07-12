@@ -47,7 +47,4 @@ app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname + '/client/views/pageNotFound404.html'));
 });
 
-
-const port = process.env.PORT || 7000;
-app.listen(port);
-console.log(`Moosify listening on ${port}`);
+module.exports = app;
