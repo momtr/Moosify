@@ -1,5 +1,4 @@
 const fetch = require('node-fetch');
-const qs = require('qs');
 
 class SpotifyAPI {
 
