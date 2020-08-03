@@ -88,7 +88,7 @@ $(document).ready(function () {
 
     $('#selectTracks').click(async () => {
 
-        let inputString = $('#inputString').val();
+        let inputString = $('#inputString').val() + ':)';
         let response = await pushSongsToLibrary(selectedIDs, inputString);
         console.log('response', response);
         
